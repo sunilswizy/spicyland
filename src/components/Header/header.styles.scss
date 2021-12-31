@@ -1,0 +1,149 @@
+:root {
+  --green: rgb(26, 175, 26);
+}
+
+// hamburger
+#menu-bar {
+  font-size: 3rem;
+  cursor: pointer;
+  color: #222;
+  border: 0.1rem solid #666;
+  border-radius: 0.3rem;
+  padding: 0.5rem 1.5rem;
+  display: none;
+}
+
+// Header
+.header {
+  width: 100%;
+  height: 12vh;
+  text-align: center;
+  font-size: 3.5rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
+  .logo {
+    width: 30%;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bolder;
+    color: #666;
+    justify-content: center;
+    letter-spacing: 0.1em;
+    i {
+      padding-right: 0.8rem;
+      color: var(--green);
+    }
+    :visited {
+      color: #222;
+    }
+    :hover {
+      color: var(--green);
+    }
+  }
+
+  .navbar {
+    width: 70%;
+    height: 15vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 5rem;
+
+    .links {
+      font-size: 1.7rem;
+      margin-left: 1.7rem;
+      color: #222;
+      display: inline;
+      padding: 1.4rem;
+
+      :visited {
+        color: #222;
+      }
+      :hover {
+        color: var(--green);
+      }
+      i {
+        padding-right: 0.8rem;
+      }
+    }
+    .profile-img{
+      width: 40%;
+      border-radius: 100%;
+      cursor: pointer;
+      border: 2px solid #222; 
+    }
+    .last{
+      padding: 0 !important;
+    }
+  }
+  
+}
+/* media queries  */
+
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+
+  header {
+    padding: 2rem;
+  }
+
+  section {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #menu-bar {
+    display: initial;
+  }
+
+  header .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #f7f7f7;
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+
+  header .navbar.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  header .navbar a {
+    margin: 1.5rem;
+    padding: 1.5rem;
+    display: block;
+    border: 0.2rem solid rgba(0, 0, 0, 0.1);
+    border-left: 0.5rem solid var(--green);
+    background: #fff;
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+
+  .order .row form .inputBox input {
+    width: 100%;
+  }
+  .logo {
+    flex-direction: column;
+  }
+}

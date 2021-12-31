@@ -1,0 +1,24 @@
+.cart-icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  stroke: #282c3f;
+  position: relative;
+  .icon {
+    padding-right: 1rem;
+    width: 100%;
+    height: 100%;
+    fill: #fff;
+    stroke-width: 2px;
+  }
+  :hover {
+    stroke: var(--green);
+  }
+  .qty{
+    position: absolute;
+    left:10%;
+    font-size: 1.2rem;
+  }
+}
