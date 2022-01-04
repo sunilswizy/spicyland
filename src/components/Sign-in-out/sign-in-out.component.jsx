@@ -1,30 +1,21 @@
-import React from "react";
-import GoogleLogin from 'react-google-login'
-import { GoogleLogout } from "react-google-login";
+import React, { useState } from "react";
+import './sign-in-out.styles.scss'
 
+import SignInForm from "../Sign-in-form/sign-in-form.component";
+import SignUpForm from "../Sign-up-form/sign-up-form.component";
 
-const SignInOut = ({handleResponse, handleLogout}) => {
+const SignInOut = ({handleResponse}) => {
+
+    const [hidden, setHidden] = useState(true)
 
     return (
-        <div>
-            <h1>Sign in out</h1>
-            <GoogleLogin
-                clientId="36246418967-2ksvmgvue652lkrnvnuaaik3q40n0afe.apps.googleusercontent.com"
-                buttonText="Google"
-                onSuccess={handleResponse}
-                onFailure={handleResponse}
-                cookiePolicy={'single_host_origin'}
-                isSignedIn={true}>
-                <span>
-                    Button
-                </span>
-            </GoogleLogin>
-
-            <GoogleLogout
-                clientId="36246418967-2ksvmgvue652lkrnvnuaaik3q40n0afe.apps.googleusercontent.com"
-                buttonText="Logout"
-                onLogoutSuccess={handleLogout}>
-            </GoogleLogout>
+        <div className="sign-in-out">
+        {
+            hidden ? 
+             <SignInForm handleResponse={handleResponse}/>
+            :<SignUpForm />
+        }
+        {/* <h1>Dont have an account! <span onClick={() => setHidden(false)}>sign up</span></h1> */}
         </div>
     )
 }

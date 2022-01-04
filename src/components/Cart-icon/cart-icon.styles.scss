@@ -6,6 +6,7 @@
   align-items: center;
   stroke: #282c3f;
   position: relative;
+  cursor: pointer;
   .icon {
     padding-right: 1rem;
     width: 100%;
@@ -13,12 +14,43 @@
     fill: #fff;
     stroke-width: 2px;
   }
-  :hover {
+  &:hover {
     stroke: var(--green);
   }
   .qty{
     position: absolute;
     left:10%;
     font-size: 1.2rem;
+  }
+}
+
+.empty-cart{
+  width: 25%;
+  height: 130px;
+  background-color: #282c3f;
+  color: white;
+  position: absolute;
+  top:90%;
+  right: 4%;
+  border-radius: 10px;
+  text-align: left;
+  padding: 1rem;
+  box-shadow: 2px 2px 8px rgba(40, 44, 63, 0.8);
+  border-top: 4px solid var(--green);
+
+  :hover{
+    color: white !important;
+  }
+  .empty-card-title{
+      padding-bottom: 0.5rem;
+  }
+
+  .empty-cart-sub{
+    line-height: 2rem;
+  }
+  .empty-cart-btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }

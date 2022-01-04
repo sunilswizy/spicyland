@@ -2,10 +2,11 @@ import React from "react";
 import './header.styles.scss'
 
 import CartIcon from "../Cart-icon/cart-icon.component";
+import ProfileImg from "../Profile-img/profile-img.component";
 
 import { Link } from "react-router-dom";
 
-const Header = ({profile}) => {
+const Header = ({profile, handleLogout}) => {
     console.log(profile)
     return (
         <header className="header"> 
@@ -20,7 +21,7 @@ const Header = ({profile}) => {
 
             <nav className="navbar">
                 <div className="links">
-                     <Link to="/"><i className="fas fa-search"></i> Search</Link>
+                     <Link to="/search"><i className="fas fa-search"></i> Search</Link>
                 </div>
                 <div className="links">
                     <Link to="/shop"><i className="fas fa-book"></i> Menu</Link>
@@ -31,13 +32,13 @@ const Header = ({profile}) => {
                 <div className="links">
                     <CartIcon/> 
                 </div>
-                <div className="links last">
+                <div className="last">
                     {
                         profile ? 
                             <>
                                 {
                                     profile.imageUrl ? 
-                                    <img src={profile.imageUrl} alt={profile.name} className="profile-img" />
+                                    <ProfileImg profile={profile} handleLogout={handleLogout}/>
                                     :
                                     <i className="far fa-user"></i> 
                                 }

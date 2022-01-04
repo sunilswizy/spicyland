@@ -1,6 +1,3 @@
-:root {
-  --green: rgb(26, 175, 26);
-}
 
 // hamburger
 #menu-bar {
@@ -45,10 +42,10 @@
       padding-right: 0.8rem;
       color: var(--green);
     }
-    :visited {
+    &:visited {
       color: #222;
     }
-    :hover {
+    &:hover {
       color: var(--green);
     }
   }
@@ -68,24 +65,30 @@
       display: inline;
       padding: 1.4rem;
 
-      :visited {
+      &:visited {
         color: #222;
       }
-      :hover {
+      &:hover {
         color: var(--green);
       }
       i {
         padding-right: 0.8rem;
       }
     }
-    .profile-img{
-      width: 40%;
-      border-radius: 100%;
-      cursor: pointer;
-      border: 2px solid #222; 
-    }
     .last{
       padding: 0 !important;
+      font-size: 1.7rem;
+      margin-left: 1.7rem;
+      color: #222;
+      display: inline;
+      padding: 1.4rem;
+
+      &:visited {
+        color: #222;
+      }
+      i {
+        padding-right: 0.8rem;
+      }
     }
   }
   

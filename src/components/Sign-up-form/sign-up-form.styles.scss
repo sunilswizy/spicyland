@@ -1,0 +1,21 @@
+.sign-up-form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5rem;
+    gap:2rem;
+    .sign-up-form-title{
+        font-size: 3.5rem;
+        color: var(--green);
+    }
+    .sign-up-form-subtitle{
+        font-size: 1.8rem;
+    }
+    .form-up-sign-btn{
+        margin-top: 2rem;
+        width: 150%;
+        display: flex;
+        justify-content: flex-start;
+    }
+}

@@ -4,13 +4,22 @@ import './App.css';
 import Header from './components/Header/header.component';
 import Homepage from './components/pages/Homepage/homepage.component'
 import Shop from './components/Shop/shop.component'
-import Review from './components/Review/review.componet';
 import Contact from './components/Contact/contact.component';
 import SignInOut from './components/Sign-in-out/sign-in-out.component';
+import Search from './components/Search/search.component';
 
 import { Switch } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+
+
+const Menus = (props) => {
+    const title = props.location.state
+  return(
+  <div>
+    <h1>{title}</h1>
+  </div>
+)}
 
 
 class App extends React.Component {
@@ -35,22 +44,24 @@ class App extends React.Component {
   }
   
   handleResponse = (response) => {
-       this.setState({loginAuth: response.profileObj}, this.handleStorage)
+        if(response) {
+            this.setState({loginAuth: response.profileObj}, this.handleStorage)
+        }
   }
 
-  handleLogout = (res) => {
-    this.setState({loginAuth: res}, this.handleStorage)
+  handleLogout = () => {
+    this.setState({loginAuth: null}, this.handleStorage)
   }
   
   render(){
     const { loginAuth } = this.state
   return (
     <div>
-      <Header profile={loginAuth} />
+      <Header profile={loginAuth} handleLogout={this.handleLogout}/>
       <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/shop' component={Shop}/>
-          <Route path='/review' component={Review}/>
+          <Route path='/search' component={Search}/>
           <Route path='/contact' component={Contact}/>
           <Route path='/signin' render={() => 
               loginAuth ? 
@@ -60,6 +71,7 @@ class App extends React.Component {
                 handleResponse={this.handleResponse} 
                 handleLogout={this.handleLogout}
               />}/>
+          <Route path='/menu/:food' component={Menus} />
       </Switch> 
     </div>
   )

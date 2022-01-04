@@ -1,0 +1,27 @@
+.profile-toggle{
+    width: 15%;
+    position: absolute;
+    right: 0.5%;
+    background-color: #282c3f;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgba(34, 34, 34,0.5);
+    border-top: 5px solid var(--green);
+
+    .profile-toggle-img{
+        border-radius: 100%;
+        width: 30%;
+        border: 1.4px solid rgb(223, 223, 223);
+        box-shadow: 0px 0px 5px inset rgba(34, 34, 34,0.5);
+    }
+    .progile-toggle-heading{
+        font-size: 1rem;
+        color: rgb(223, 219, 219);
+    }
+    .profile-toggle-email{
+        font-size: 1rem;
+    }
+}

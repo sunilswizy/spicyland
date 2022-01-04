@@ -1,0 +1,18 @@
+.directory{
+    width: 100%;
+    .directory-con{
+        width: 100%;
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: space-between;
+        padding: 2rem 8rem;
+    }
+    .directory-heading{
+        font-size: 3rem;
+        text-align: center;
+        span{
+            color: var(--green);
+        }
+    }
+}
+

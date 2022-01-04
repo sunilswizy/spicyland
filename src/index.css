@@ -7,6 +7,13 @@ html {
   scroll-padding-top: 6rem;
 }
 
+/* variables */
+
+ :root {
+    --green: rgb(26, 175, 26);
+    --lightgreen: rgba(26, 175, 26, 0.7);
+  }
+
 body {
   margin: 0;
   font-family: "Nunito", sans-serif;
@@ -20,11 +27,29 @@ body {
   outline: none;
   border: none;
   text-decoration: none;
-  text-transform: capitalize;
   transition: all 0.2s linear;
+}
+
+*::selection{
+  background-color : var(--green);
+  color: #f7f7f7;
 }
 
 a{
   text-decoration: none;
   color: #222;
+}
+
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(201, 201, 201);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(161, 161, 161);
 }
