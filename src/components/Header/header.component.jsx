@@ -13,13 +13,13 @@ const Header = ({profile, handleLogout}) => {
             
             <div className="logo">
               <Link to='/'>
-                <i className="fas fa-pizza-slice"></i>fooDoor
+                <i className="fas fa-pizza-slice"></i>SpicylanD
               </Link>
             </div>
 
             <div id="menu-bar" className="fas fa-bars"></div>
 
-            <nav className="navbar">
+            <nav className="navbar-head">
                 <div className="links">
                      <Link to="/search"><i className="fas fa-search"></i> Search</Link>
                 </div>

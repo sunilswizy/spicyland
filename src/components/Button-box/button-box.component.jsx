@@ -1,9 +1,10 @@
 import React from "react";
 import './button-box.styles.scss'
 
-const ButtonBox = ({children}) => {
+const ButtonBox = ({children, color}) => {
+    const sty = color ? {background: color} : {}
        return <>
-            <button className="button-box"> {children} </button>
+            <button style={sty} className="button-box"> {children} </button>
         </>
 }
 

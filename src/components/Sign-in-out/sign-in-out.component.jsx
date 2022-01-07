@@ -15,8 +15,17 @@ const SignInOut = ({handleResponse}) => {
              <SignInForm handleResponse={handleResponse}/>
             :<SignUpForm />
         }
-        {/* <h1>Dont have an account! <span onClick={() => setHidden(false)}>sign up</span></h1> */}
-        </div>
+        {
+            hidden ?
+            <div className="sign-in-out-text">
+                <h1 className="sign-in-out-heading">Dont have an account! <span className="sign-in-out-sub-heading" onClick={() => setHidden(false)}>sign up</span></h1>
+            </div>
+            :
+            <div className="sign-in-out-text">
+                <h1 className="sign-in-out-heading">Aready have an account! <span className="sign-in-out-sub-heading" onClick={() => setHidden(true)}>sign in</span></h1>
+            </div>
+        }
+    </div>
     )
 }
 

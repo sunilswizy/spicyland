@@ -24,10 +24,10 @@ const SignInForm = ({handleResponse}) => {
 
     return (
         <div className="sign-in-form">
-        <div>
-             <h2 className="sign-in-form-title">I already have an account!</h2>
-              <span className="sign-in-form-subtitle">sign in with your username and password</span>
-        </div>
+            <div className="sign-in-form-headings">
+                <h2 className="sign-in-form-title">I already have an account!</h2>
+                <span className="sign-in-form-subtitle">sign in with your username and password</span>
+            </div>
         <div className="sign-form-con">
 
             <form onSubmit={handleSubmit}> 

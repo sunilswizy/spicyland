@@ -25,8 +25,7 @@
 }
 
 .empty-cart{
-  width: 25%;
-  height: 130px;
+  width: 27%;
   background-color: #282c3f;
   color: white;
   position: absolute;
@@ -44,9 +43,10 @@
   .empty-card-title{
       padding-bottom: 0.5rem;
   }
-
   .empty-cart-sub{
-    line-height: 2rem;
+    line-height: 1.7rem;
+    display: block;
+    padding-bottom: 1rem !important;
   }
   .empty-cart-btn{
     width: 100%;
