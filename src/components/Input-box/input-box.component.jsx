@@ -7,7 +7,7 @@ const InputBox = ({children,bigBox,bigBoxup, ...props}) => {
         {
             children && <label className="input-box-label">{children}</label>
         }
-        <input {...props}  className={`${bigBox && "big"} ${bigBoxup && "big-box-up"} input-box`}/>
+        <input {...props}  className={`input-box ${bigBox && "big"} ${bigBoxup && "big-box-up"}`}/>
     </>
 )}
 

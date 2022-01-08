@@ -13,7 +13,8 @@ const Header = ({profile, handleLogout}) => {
             
             <div className="logo">
               <Link to='/'>
-                <i className="fas fa-pizza-slice"></i>SpicylanD
+                <i className="fas fa-pizza-slice"></i>
+                <span className="logo-name">SpicylanD</span>
               </Link>
             </div>
 

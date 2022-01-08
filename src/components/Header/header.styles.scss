@@ -48,6 +48,9 @@
     &:hover {
       color: var(--green);
     }
+    .logo-name{
+      font-size: 2.5rem;
+    }
   }
 
   .navbar-head {
@@ -109,12 +112,13 @@
   }
 }
 
+
 @media (max-width: 768px) {
   #menu-bar {
     display: initial;
   }
 
-  header .navbar {
+  header .navbar-head {
     position: absolute;
     top: 100%;
     left: 0;
@@ -124,17 +128,29 @@
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   }
 
-  header .navbar.active {
+  header .navbar-head.active {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
 
-  header .navbar a {
+  header .navbar-head a {
     margin: 1.5rem;
     padding: 1.5rem;
     display: block;
     border: 0.2rem solid rgba(0, 0, 0, 0.1);
     border-left: 0.5rem solid var(--green);
     background: #fff;
+  }
+}
+
+@media (max-width: 700px) {
+  
+  .logo {
+    .logo-name{
+      font-size: 1.5rem;
+    }
+    i{
+      padding-right: 0rem;
+    }
   }
 }
 
@@ -147,6 +163,11 @@
     width: 100%;
   }
   .logo {
-    flex-direction: column;
+    .logo-name{
+      font-size: 1rem;
+    }
+  }
+  .logo-name{
+    font-size: 2rem !important;
   }
 }

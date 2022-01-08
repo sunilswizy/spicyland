@@ -8,7 +8,7 @@ const Directory = () => {
     return (
         <div className="directory">
             <div className="directory-heading">
-                    <h1>Our <span>specialty</span></h1>
+                    <h1 className="directory-heading-name">Our <span>specialty</span></h1>
             </div>
             <div className="directory-con">
             {

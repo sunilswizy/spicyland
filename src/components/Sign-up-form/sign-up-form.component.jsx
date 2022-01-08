@@ -3,8 +3,9 @@ import './sign-up-form.styles.scss'
 
 import InputBox from "../Input-box/input-box.component";
 import ButtonBox from "../Button-box/button-box.component";
+import SignInBtn from '../sign-in-btn/sign-in-btn.component'
 
-const SignUpForm = () => {
+const SignUpForm = ({handleResponse}) => {
     const [formValues, setFormvalues] = useState({
         userName: '',
         email:'',
@@ -24,11 +25,12 @@ const SignUpForm = () => {
     }
 
     return (
-        <div className="sign-up-form">
-        <div>
+        <div className="container sign-up-form">
+        <div className="sign-up-form-heading">
              <h2 className="sign-up-form-title">I dont have an account</h2>
               <span className="sign-up-form-subtitle">create account with email and password</span>
         </div>
+        <div className="col-md-6">
 
               <form onSubmit={handleSubmit}> 
               <div className="sign-up-form-con">
@@ -37,7 +39,6 @@ const SignUpForm = () => {
                     name="userName"
                     type="text"
                     onChange={handleChange}
-                    bigBoxup
                  > 
                  Username
                  </InputBox> 
@@ -48,7 +49,6 @@ const SignUpForm = () => {
                     name="email"
                     type="email"
                     onChange={handleChange}
-                    bigBoxup
                     > 
                 email </InputBox> 
                  </div>
@@ -58,7 +58,6 @@ const SignUpForm = () => {
                     name="password"
                     type="password"
                     onChange={handleChange}
-                    bigBoxup
                     > 
                 password </InputBox> 
                  </div>
@@ -68,14 +67,15 @@ const SignUpForm = () => {
                     name="confirmPassword"
                     type="password"
                     onChange={handleChange}
-                    bigBoxup
                     > 
                 confirm password </InputBox> 
                  </div>
                 <div className="form-up-sign-btn">
-                    <ButtonBox>Login</ButtonBox>
+                    <ButtonBox>SIGNUP</ButtonBox>
+                    <ButtonBox>SIGNUP</ButtonBox>
                 </div>
               </form>
+            </div>
         </div>
     )
 }

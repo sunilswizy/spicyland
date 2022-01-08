@@ -1,12 +1,16 @@
 .sign-in-form{
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5rem;
+    // padding: 3rem;
     gap:2rem;
     .sign-in-form-headings{
-        width: 100%;
+        // width: 100%;
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        margin-left: -10rem;
     }
     .sign-in-form-title{
         font-size: 4.5rem;
@@ -17,11 +21,35 @@
     }
     .form-in-sign-btn{
         margin-top: 3rem;
-        width: 90%;
+        width: 80%;
         display: flex;
         justify-content: space-evenly;
+        gap:10px;
     }
-    .sign-form-con{
-        width: 100%;
+
+    @media (max-width: 1050px) {
+        .sign-in-form-title{
+            font-size: 3.5rem;
+        }
+        .sign-in-form-subtitle{
+            font-size: 1.3rem;
+        }
+        .sign-in-form-headings{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 0rem;
+        }
+        .form-in-sign-btn{
+            width: 100%;
+        }
+
+    }
+
+    @media (max-width: 400px) {
+        .sign-in-form-title{
+            font-size: 2.5rem;
+        }
     }
 }

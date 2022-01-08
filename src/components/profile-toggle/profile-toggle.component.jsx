@@ -10,7 +10,7 @@ const ProfileToggle = ({handleLogout, profile : {imageUrl, name, email}}) => {
                 <img src={imageUrl} alt={name} className="profile-toggle-img" />
             </div>
             <div className="progile-toggle-heading">
-               <h2>{name}</h2>
+               <h2 className="progile-toggle-name">{name}</h2>
                 <span className="profile-toggle-email">{email}</span>
             </div>
             <SignOutBtn handleLogout={handleLogout}/>

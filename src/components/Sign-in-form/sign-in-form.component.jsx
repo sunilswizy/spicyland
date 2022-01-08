@@ -23,12 +23,12 @@ const SignInForm = ({handleResponse}) => {
     }
 
     return (
-        <div className="sign-in-form">
+        <div className="container sign-in-form">
             <div className="sign-in-form-headings">
                 <h2 className="sign-in-form-title">I already have an account!</h2>
                 <span className="sign-in-form-subtitle">sign in with your username and password</span>
             </div>
-        <div className="sign-form-con">
+        <div className="col-md-6">
 
             <form onSubmit={handleSubmit}> 
               <div className="sign-in-form-con">
@@ -37,7 +37,6 @@ const SignInForm = ({handleResponse}) => {
                     name="userName"
                     type="text"
                     onChange={handleChange}
-                    bigBox
                  > 
                  Username
                  </InputBox> 
@@ -48,7 +47,6 @@ const SignInForm = ({handleResponse}) => {
                     name="password"
                     type="password"
                     onChange={handleChange}
-                    bigBox
                     > 
                 password </InputBox> 
                  </div>

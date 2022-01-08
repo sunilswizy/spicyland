@@ -1,6 +1,8 @@
 import React from "react";
 import './footer.styles.scss'
 
+import { Link } from "react-router-dom";
+
 const year = new Date().getFullYear()
 
 const Footer = () => (
@@ -17,21 +19,21 @@ const Footer = () => (
           <div className="col-xs-6 col-md-3">
             <h6 className="footer-heading">Categories</h6>
             <ul className="footer-links">
-              <li><a className="footer-link" href='/'>Home</a></li>
-              <li><a className="footer-link" href='/search'>Search</a></li>
-              <li><a className="footer-link" href='/menu'>Menu</a></li>
-              <li><a className="footer-link" href='/contact'>Contact</a></li>
+              <li><Link className="footer-link" to='/'>Home</Link> </li>
+              <li><Link className="footer-link" to='/search'>Search</Link></li>
+              <li><Link className="footer-link" to='/shop'>Menu</Link> </li>
+              <li><Link className="footer-link" to='/contact'>Contact</Link></li>
             </ul>
           </div>
 
           <div className="col-xs-6 col-md-3">
             <h6 className="footer-heading">Quick Links</h6>
             <ul className="footer-links">
-              <li><a className="footer-link" href='/'>About Us</a></li>
-              <li><a className="footer-link" href='/'>Contact Us</a></li>
-              <li><a className="footer-link" href='/'>Contribute</a></li>
-              <li><a className="footer-link" href='/'>Privacy Policy</a></li>
-              <li><a className="footer-link" href='/'>Copyright</a></li>
+              <li><Link to='/' className="footer-link">About Us</Link></li>
+              <li><Link to='/' className="footer-link">Contact Us</Link></li>
+              <li><Link to='/' className="footer-link">Contribute</Link></li>
+              <li><Link to='/' className="footer-link">Privacy Policy</Link></li>
+              <li><Link to='/' className="footer-link">Copyright</Link></li>
             </ul>
           </div>
         </div>
@@ -41,16 +43,16 @@ const Footer = () => (
         <div className="row">
           <div className="col-md-8 col-sm-6 col-xs-12">
             <p className="copyright-text">Copyright &copy; {year} All Rights Reserved by 
-         <a className="footer-link" href="/"> Swizy</a>.
+         <a className="footer-link" target="_blank" rel="noreferrer" href="https://www.instagram.com/sunil_swizy/"> Swizy</a>.
             </p>
           </div>
 
           <div className="col-md-4 col-sm-6 col-xs-12">
             <ul className="social-icons">
-              <li><a className="footer-link" className="facebook" href="/facebook"><i className="fab fa-facebook"></i></a></li>
-              <li><a className="footer-link" className="twitter" href="/twitter"><i className="fab fa-twitter"></i></a></li>
-              <li><a className="footer-link" className="dribbble" href="/dribbble"><i className="fab fa-instagram"></i></a></li>
-              <li><a className="footer-link" className="linkedin" href="/linkdin"><i className="fab fa-linkedin"></i></a></li>   
+              <li><Link className="footer-link facebook" to="/facebook"><i className="fab fa-facebook"/></Link></li>
+              <li><Link className="footer-link twitter" to="/twitter"><i className="fab fa-twitter"/></Link></li>
+              <li><Link className="footer-link dribbble" to="/dribbble"><i className="fab fa-instagram"/></Link></li>
+              <li><Link className="footer-link linkedin" to="/linkdin"><i className="fab fa-linkedin"/></Link></li>   
             </ul>
           </div>
         </div>
