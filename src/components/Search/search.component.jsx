@@ -6,7 +6,6 @@ import SearchList from "../Search-list/search-list.componet";
 import directory_data from "../Directory/directory-data";
 
 class Search extends React.Component{
-
     constructor() {
         super()
         this.state = {
@@ -39,7 +38,7 @@ class Search extends React.Component{
        const text = search ? "Clear" : ''
     return (
         <>
-        <div className="search">
+        <div className="container search">
             <div className="search-con"><i className="fas fa-search"></i></div>
                 <SearchInputBox 
                     value={search}

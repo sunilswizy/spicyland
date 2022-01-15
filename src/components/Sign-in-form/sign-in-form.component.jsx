@@ -3,7 +3,10 @@ import './sign-in-form.styles.scss'
 
 import InputBox from "../Input-box/input-box.component";
 import ButtonBox from "../Button-box/button-box.component";
-import SignInBtn from "../sign-in-btn/sign-in-btn.component";
+import GoogleBtn from "../Google-btn/google-btn.component";
+
+import { auth } from "../pages/firebase/firebase.config";
+import { GoogleAuthProvider, signInWithPopup  } from 'firebase/auth'
 
 const SignInForm = ({handleResponse}) => {
     const [formValues, setFormvalues] = useState({
@@ -20,6 +23,13 @@ const SignInForm = ({handleResponse}) => {
     const handleChange = e => {
             const {value, name} = e.target
             setFormvalues({...formValues, [name]: value})
+    }
+
+    const provider = new GoogleAuthProvider()
+
+    const signInWithGoogle = async () => {
+        const response  = await signInWithPopup(auth, provider)
+        handleResponse(response.user)
     }
 
     return (
@@ -52,8 +62,8 @@ const SignInForm = ({handleResponse}) => {
                  </div>
                  
                 <div className="form-in-sign-btn">
-                    <ButtonBox>Login</ButtonBox>
-                    <SignInBtn handleResponse={handleResponse}><i className="fab fa-google"></i> Google Login</SignInBtn>
+                    <ButtonBox >Login</ButtonBox>
+                    <GoogleBtn onClick={signInWithGoogle}>Sign in with Google</GoogleBtn>
                 </div>
               </form>
         </div>

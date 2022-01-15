@@ -3,9 +3,9 @@ import './sign-up-form.styles.scss'
 
 import InputBox from "../Input-box/input-box.component";
 import ButtonBox from "../Button-box/button-box.component";
-import SignInBtn from '../sign-in-btn/sign-in-btn.component'
+import GoogleBtn from "../Google-btn/google-btn.component";
 
-const SignUpForm = ({handleResponse}) => {
+const SignUpForm = () => {
     const [formValues, setFormvalues] = useState({
         userName: '',
         email:'',
@@ -72,7 +72,7 @@ const SignUpForm = ({handleResponse}) => {
                  </div>
                 <div className="form-up-sign-btn">
                     <ButtonBox>SIGNUP</ButtonBox>
-                    <ButtonBox>SIGNUP</ButtonBox>
+                    <GoogleBtn>Sign in with google</GoogleBtn>
                 </div>
               </form>
             </div>

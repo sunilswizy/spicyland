@@ -30,23 +30,24 @@
 
   .logo {
     width: 30%;
-    height: 15vh;
+    height: 12vh;
     display: flex;
     align-items: center;
-    font-size: 3rem;
+    justify-content: center;
     font-weight: bolder;
     color: #666;
-    justify-content: center;
     letter-spacing: 0.1em;
+    margin: 1rem;
     i {
       padding-right: 0.8rem;
       color: var(--green);
     }
-    &:visited {
+    :visited {
       color: #222;
     }
-    &:hover {
+    :hover {
       color: var(--green);
+      animation: trans 2s ease-in-out infinite;
     }
     .logo-name{
       font-size: 2.5rem;
@@ -68,11 +69,14 @@
       display: inline;
       padding: 1.4rem;
 
+      .link{
+        
       &:visited {
         color: #222;
       }
       &:hover {
         color: var(--green);
+      }
       }
       i {
         padding-right: 0.8rem;
@@ -86,7 +90,7 @@
       display: inline;
       padding: 1.4rem;
 
-      &:visited {
+      :visited {
         color: #222;
       }
       i {
@@ -109,6 +113,9 @@
 
   section {
     padding: 2rem;
+  }
+  .logo {
+    width: 40%;
   }
 }
 
@@ -142,32 +149,46 @@
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 710px) {
   
   .logo {
     .logo-name{
-      font-size: 1.5rem;
+      font-size: 2rem !important;
     }
     i{
-      padding-right: 0rem;
+      font-size: 2.3rem !important;
+      padding-right: 0rem !important;
     }
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 470px) {
   html {
     font-size: 50%;
   }
-
   .order .row form .inputBox input {
     width: 100%;
   }
   .logo {
+    justify-content: flex-start !important;
+    width: 50% !important;
     .logo-name{
-      font-size: 1rem;
+      font-size: 2.4rem !important;
+    }
+    i{
+      font-size: 2.6rem !important;
     }
   }
-  .logo-name{
-    font-size: 2rem !important;
+}
+
+@media (max-width: 390px) {
+  .logo {
+    justify-content: flex-start !important;
+    .logo-name{
+      font-size: 2.1rem !important;
+    }
+    i{
+      font-size: 2.3rem !important;
+    }
   }
 }

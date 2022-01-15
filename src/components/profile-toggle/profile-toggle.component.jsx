@@ -1,19 +1,19 @@
 import React from "react";
 import './profile-toggle.styles.scss'
 
-import SignOutBtn from "../Sign-out-btn/Sign-out-btn.component";
+import GoogleBtn from "../Google-btn/google-btn.component";
 
-const ProfileToggle = ({handleLogout, profile : {imageUrl, name, email}}) => {
+const ProfileToggle = ({handleLogout, profile : {photoURL, displayName, email}}) => {
     return (
         <div className="profile-toggle">
             <div>
-                <img src={imageUrl} alt={name} className="profile-toggle-img" />
+                <img src={photoURL} alt={displayName} className="profile-toggle-img" />
             </div>
             <div className="progile-toggle-heading">
-               <h2 className="progile-toggle-name">{name}</h2>
+               <h2 className="progile-toggle-name">{displayName}</h2>
                 <span className="profile-toggle-email">{email}</span>
             </div>
-            <SignOutBtn handleLogout={handleLogout}/>
+            <GoogleBtn onClick={handleLogout}>Signout</GoogleBtn>
         </div>
     )
 }

@@ -4,7 +4,7 @@ import ProfileToggle from "../profile-toggle/profile-toggle.component";
 
 const ProfileImg = ({profile,handleLogout}) => {
     const [ishidden, setIsHidden] = useState(true)
-    const img = profile.imageUrl
+    const img = profile.photoURL
     return (
         <>
             <img src={img} 

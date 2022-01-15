@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 import Header from './components/Header/header.component';
@@ -12,6 +12,8 @@ import { Switch } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
+import { auth } from './components/pages/firebase/firebase.config';
+import {  onAuthStateChanged, signOut } from 'firebase/auth';
 
 const Menus = (props) => {
     const title = props.location.state
@@ -22,42 +24,34 @@ const Menus = (props) => {
 )}
 
 
-class App extends React.Component {
+const App = () => {
+  
+  const [loginAuth, setLoginAuth] = useState(null)
 
-   constructor() {
-     super()
-     this.state = {
-       loginAuth: null
-     }
-   }
-
-  componentDidMount() {
-      if(localStorage.getItem('loginAuth')) {
-        const data = JSON.parse(localStorage.getItem('loginAuth'))
-        this.setState({loginAuth: data})
+  useEffect(() => {
+    let unSubscribe;
+     const checkAuth = async () =>{
+      unSubscribe =  onAuthStateChanged(auth, user => {
+              if(user) {
+                setLoginAuth(user)
+              }
+              else{
+                setLoginAuth(null)
+              }
+          })
       }
-   }
+      checkAuth()
+      return unSubscribe;
+  }, [])
 
-  handleStorage =() => {
-    const data = JSON.stringify(this.state.loginAuth)
-    localStorage.setItem("loginAuth", data)
-  }
-  
-  handleResponse = (response) => {
-        if(response) {
-            this.setState({loginAuth: response.profileObj}, this.handleStorage)
-        }
+  const handleLogout = async () =>{
+      await signOut(auth)
+      setLoginAuth(null)
   }
 
-  handleLogout = () => {
-    this.setState({loginAuth: null}, this.handleStorage)
-  }
-  
-  render(){
-    const { loginAuth } = this.state
   return (
     <div>
-      <Header profile={loginAuth} handleLogout={this.handleLogout}/>
+      <Header profile={loginAuth} handleLogout={handleLogout}/>
       <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/shop' component={Shop}/>
@@ -68,14 +62,12 @@ class App extends React.Component {
                <Redirect to='/'/>
                :
               <SignInOut 
-                handleResponse={this.handleResponse} 
-                handleLogout={this.handleLogout}
+                handleResponse={setLoginAuth} 
               />}/>
           <Route path='/menu/:food' component={Menus} />
       </Switch> 
     </div>
   )
-} 
 }
 
 export default App;
