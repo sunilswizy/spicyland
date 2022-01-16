@@ -5,15 +5,15 @@ import Header from './components/Header/header.component';
 import Homepage from './components/pages/Homepage/homepage.component'
 import Shop from './components/Shop/shop.component'
 import Contact from './components/Contact/contact.component';
-import SignInOut from './components/Sign-in-out/sign-in-out.component';
 import Search from './components/Search/search.component';
+import SignUpForm from './components/Sign-up-form/sign-up-form.component';
+import SignInForm from './components/Sign-in-form/sign-in-form.component';
 
-import { Switch } from 'react-router-dom';
-import { Route } from 'react-router-dom';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { Route, Redirect, Switch } from 'react-router-dom';
 
-import { auth } from './components/pages/firebase/firebase.config';
-import {  onAuthStateChanged, signOut } from 'firebase/auth';
+import { auth, createUserProfileDocument } from './components/pages/firebase/firebase.config';
+import { onAuthStateChanged } from 'firebase/auth';
+import { onSnapshot } from 'firebase/firestore'
 
 const Menus = (props) => {
     const title = props.location.state
@@ -26,44 +26,47 @@ const Menus = (props) => {
 
 const App = () => {
   
-  const [loginAuth, setLoginAuth] = useState(null)
+  const [currentUser, setcurrentUser] = useState(null)
 
   useEffect(() => {
     let unSubscribe;
      const checkAuth = async () =>{
-      unSubscribe =  onAuthStateChanged(auth, user => {
-              if(user) {
-                setLoginAuth(user)
-              }
-              else{
-                setLoginAuth(null)
-              }
+      unSubscribe =  onAuthStateChanged(auth, async userAuth => {
+          if(userAuth) {
+                const userRef = await createUserProfileDocument(userAuth)
+
+                onSnapshot(userRef, user => {
+                  setcurrentUser({...user.data(), id: user.id})
+                })
+          }
+
+          setcurrentUser(userAuth)
+
           })
       }
-      checkAuth()
+      checkAuth();
+
       return unSubscribe;
   }, [])
 
-  const handleLogout = async () =>{
-      await signOut(auth)
-      setLoginAuth(null)
-  }
-
   return (
     <div>
-      <Header profile={loginAuth} handleLogout={handleLogout}/>
+      <Header profile={currentUser}/>
       <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/shop' component={Shop}/>
           <Route path='/search' component={Search}/>
           <Route path='/contact' component={Contact}/>
           <Route path='/signin' render={() => 
-              loginAuth ? 
+              currentUser ? 
                <Redirect to='/'/>
                :
-              <SignInOut 
-                handleResponse={setLoginAuth} 
-              />}/>
+              <SignInForm/>}/>
+          <Route path='/signup' render={() => 
+              currentUser ? 
+               <Redirect to='/'/>
+               :
+              <SignUpForm/>}/>
           <Route path='/menu/:food' component={Menus} />
       </Switch> 
     </div>

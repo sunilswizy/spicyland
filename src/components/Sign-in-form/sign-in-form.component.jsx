@@ -1,74 +1,89 @@
 import React, { useState } from "react";
-import './sign-in-form.styles.scss'
+import "./sign-in-form.styles.scss";
 
 import InputBox from "../Input-box/input-box.component";
 import ButtonBox from "../Button-box/button-box.component";
 import GoogleBtn from "../Google-btn/google-btn.component";
 
-import { auth } from "../pages/firebase/firebase.config";
-import { GoogleAuthProvider, signInWithPopup  } from 'firebase/auth'
+import { Link } from "react-router-dom";
 
-const SignInForm = ({handleResponse}) => {
-    const [formValues, setFormvalues] = useState({
-        userName: '',
-        password: ''
-    })
+import { signInWithGoogle, auth } from "../pages/firebase/firebase.config";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
-    const {userName, password } = formValues
+const SignInForm = () => {
+	const [formValues, setFormvalues] = useState({
+		email: "",
+		password: "",
+	});
 
-    const handleSubmit = e => {
-            e.preventDefault()
-    }
+	const { email, password } = formValues;
 
-    const handleChange = e => {
-            const {value, name} = e.target
-            setFormvalues({...formValues, [name]: value})
-    }
+	const handleChange = e => {
+		const { value, name } = e.target;
+		setFormvalues({ ...formValues, [name]: value });
+	};
 
-    const provider = new GoogleAuthProvider()
+	const handleSubmit = async e => {
+		e.preventDefault();
+		try {
+			await signInWithEmailAndPassword(auth, email, password);
+		} catch (e) {
+			alert("Email and Password don't match!");
+		}
 
-    const signInWithGoogle = async () => {
-        const response  = await signInWithPopup(auth, provider)
-        handleResponse(response.user)
-    }
+		setFormvalues({
+			email: "",
+			password: "",
+		});
+	};
 
-    return (
-        <div className="container sign-in-form">
-            <div className="sign-in-form-headings">
-                <h2 className="sign-in-form-title">I already have an account!</h2>
-                <span className="sign-in-form-subtitle">sign in with your username and password</span>
-            </div>
-        <div className="col-md-6">
+	return (
+		<div className='container sign-in-form'>
+			<div className='sign-in-form-headings'>
+				<h2 className='sign-in-form-title'>I already have an account!</h2>
+				<span className='sign-in-form-subtitle'>
+					sign in with your email and password
+				</span>
+			</div>
+			<div className='col-md-6'>
+				<form onSubmit={handleSubmit}>
+					<div className='sign-in-form-con'>
+						<InputBox
+							value={email}
+							name='email'
+							type='text'
+							onChange={handleChange}>
+							Email
+						</InputBox>
+					</div>
+					<div className='sign-in-form-con'>
+						<InputBox
+							value={password}
+							name='password'
+							type='password'
+							onChange={handleChange}>
+							Password{" "}
+						</InputBox>
+					</div>
 
-            <form onSubmit={handleSubmit}> 
-              <div className="sign-in-form-con">
-                 <InputBox 
-                    value={userName}
-                    name="userName"
-                    type="text"
-                    onChange={handleChange}
-                 > 
-                 Username
-                 </InputBox> 
-                </div>
-                <div className="sign-in-form-con">
-                 <InputBox 
-                    value={password}
-                    name="password"
-                    type="password"
-                    onChange={handleChange}
-                    > 
-                password </InputBox> 
-                 </div>
-                 
-                <div className="form-in-sign-btn">
-                    <ButtonBox >Login</ButtonBox>
-                    <GoogleBtn onClick={signInWithGoogle}>Sign in with Google</GoogleBtn>
-                </div>
-              </form>
-        </div>
-        </div>
-    )
-}
+					<div className='form-in-sign-btn'>
+						<ButtonBox>LOGIN</ButtonBox>
+						<GoogleBtn onClick={signInWithGoogle}>
+							SIGN IN WITH GOOGLE
+						</GoogleBtn>
+					</div>
+				</form>
+			</div>
+			<div className='sign-in-out-text'>
+				<h1 className='sign-in-out-heading'>
+					Dont have an account! &nbsp;
+					<Link to='/signup' className='sign-in-out-sub-heading'>
+						sign up
+					</Link>
+				</h1>
+			</div>
+		</div>
+	);
+};
 
-export default SignInForm
+export default SignInForm;

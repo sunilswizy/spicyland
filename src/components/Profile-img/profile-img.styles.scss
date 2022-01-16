@@ -12,3 +12,11 @@
     box-shadow: 0px 0px 5px inset rgba(34, 34, 34,0.5), 0px 0px 5px rgba(34, 34, 34,0.5)  ;
 }
 
+.nameIcon{
+    text-transform: capitalize;
+    &:hover{
+        color: var(--green);
+        cursor: pointer;
+    }
+}
+
