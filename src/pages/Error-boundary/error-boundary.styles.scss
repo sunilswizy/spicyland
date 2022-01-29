@@ -1,0 +1,147 @@
+.parent {
+	width: 100%;
+	height: 88vh;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.box-parent {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.scene {
+	perspective: 400px;
+}
+
+.box {
+	position: relative;
+	width: 200px;
+	height: 200px;
+
+	transform-style: preserve-3d;
+	transform: translateZ(-100px);
+	transition: 0.3s;
+	animation-name: rotateAnimation;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+
+	&__face {
+		position: absolute;
+		width: 200px;
+		height: 200px;
+		font-size: 120px;
+		line-height: 200px;
+		text-align: center;
+		color: #fff;
+		border: 1px solid #1aaf1a;
+
+		&.front {
+			transform: rotateY(0deg) translateZ(100px);
+			background: var(--green);
+		}
+
+		&.back {
+			transform: rotateY(90deg) translateZ(100px);
+			background: darken(#1aaf1a, 5%);
+		}
+
+		&.right {
+			transform: rotateY(180deg) translateZ(100px);
+			background: darken(#1aaf1a, 10%);
+		}
+
+		&.left {
+			transform: rotateY(-90deg) translateZ(100px);
+			background: darken(#1aaf1a, 15%);
+		}
+
+		&.top {
+			transform: rotateX(90deg) translateZ(100px);
+			background: darken(#1aaf1a, 5%);
+		}
+
+		&.bottom {
+			transform: rotateX(-90deg) translateZ(100px);
+			background: darken(#1aaf1a, 20%);
+		}
+	}
+}
+
+@keyframes rotateAnimation {
+	25% {
+		transform: translateZ(-100px) rotateY(-90deg);
+	}
+	50% {
+		transform: translateZ(-100px) rotateY(-180deg);
+	}
+	75% {
+		transform: translateZ(-100px) rotateX(-90deg);
+	}
+	85% {
+		transform: translateZ(-100px) rotateX(-90deg);
+	}
+}
+
+.shadow {
+	position: absolute;
+	z-index: -1;
+	left: -50px;
+	top: calc(100% - 20px);
+	width: calc(100% + 100px);
+	height: 30px;
+	border-radius: 50%;
+	background: #1aaf1a;
+	filter: blur(30px);
+}
+
+.desc {
+	margin-top: 60px;
+	text-align: center;
+	h2 {
+		margin: 0;
+		font-size: 26px;
+	}
+
+	a {
+		display: inline-block;
+		border: 2px solid #1aaf1a;
+		background: transparent;
+		margin-top: 20px;
+		padding: 10px 20px;
+		font-size: 13px;
+		font-family: "Days One", sans-serif;
+		box-shadow: 4px 4px 0 0px rgba(#130d1a, 0.5);
+		position: relative;
+		transition: 0.3s;
+		outline: none;
+		cursor: pointer;
+		border-radius: 0 20px;
+		overflow: hidden;
+
+		&:after {
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 0;
+			content: "";
+			background: #1aaf1a;
+			transition: 0.3s;
+			z-index: -1;
+		}
+
+		&:hover {
+			color: #fff;
+			letter-spacing: 2px;
+			&:after {
+				height: 100%;
+			}
+		}
+
+		&:active {
+			box-shadow: 0 0 0 0px rgba(#000, 0.5);
+		}
+	}
+}

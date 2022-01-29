@@ -1,0 +1,23 @@
+.menu-overview {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	.menu-overview-heading {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		h1 {
+			font-size: 5rem;
+			cursor: pointer;
+			text-transform: uppercase;
+		}
+	}
+
+	.menu-overview-items {
+		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 15px;
+	}
+}

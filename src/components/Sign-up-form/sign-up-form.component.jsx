@@ -8,7 +8,7 @@ import GoogleBtn from "../Google-btn/google-btn.component";
 import {
 	auth,
 	createUserProfileDocument,
-} from "../pages/firebase/firebase.config";
+} from "../../pages/firebase/firebase.config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 
@@ -52,9 +52,9 @@ const SignUpForm = () => {
 	};
 
 	return (
-		<div className='container sign-up-form'>
+		<div className='sign-up-form'>
 			<div className='sign-up-form-heading'>
-				<h2 className='sign-up-form-title'>I dont have an account</h2>
+				<h2 className='sign-up-form-title'>I dont have an account !</h2>
 				<span className='sign-up-form-subtitle'>
 					create account with email and password
 				</span>
@@ -62,44 +62,44 @@ const SignUpForm = () => {
 			<div className='col-md-6'>
 				<form onSubmit={handleSubmit}>
 					<div className='sign-up-form-con'>
+						<label className='sign-up-form-label'>Username</label>
 						<InputBox
 							value={displayName}
 							name='displayName'
 							type='text'
 							onChange={handleChange}
-							required>
-							Username
-						</InputBox>
+							required
+						/>
 					</div>
 					<div className='sign-up-form-con'>
+						<label className='sign-up-form-label'>Email</label>
 						<InputBox
 							value={email}
 							name='email'
 							type='email'
 							onChange={handleChange}
-							required>
-							email{" "}
-						</InputBox>
+							required
+						/>
 					</div>
 					<div className='sign-up-form-con'>
+						<label className='sign-up-form-label'>Password</label>
 						<InputBox
 							value={password}
 							name='password'
 							type='password'
 							onChange={handleChange}
-							required>
-							password{" "}
-						</InputBox>
+							required
+						/>
 					</div>
 					<div className='sign-up-form-con'>
+						<label className='sign-up-form-label'>Confirm Password</label>
 						<InputBox
 							value={confirmPassword}
 							name='confirmPassword'
 							type='password'
 							onChange={handleChange}
-							required>
-							confirm password{" "}
-						</InputBox>
+							required
+						/>
 					</div>
 					<div className='form-up-sign-btn'>
 						<ButtonBox>SIGNUP</ButtonBox>

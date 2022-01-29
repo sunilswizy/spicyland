@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import "./profile-img.styles.scss";
 import ProfileToggle from "../profile-toggle/profile-toggle.component";
 
-import { auth } from "../pages/firebase/firebase.config";
-
 const ProfileImg = ({ currentUser }) => {
 	const [ishidden, setIsHidden] = useState(true);
 	const { photoURL, displayName } = currentUser;
 	return (
 		<>
-			{auth.currentUser?.photoURL ? (
+			{currentUser?.photoURL ? (
 				<>
 					<img
 						src={photoURL}

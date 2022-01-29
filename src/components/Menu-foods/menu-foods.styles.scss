@@ -1,0 +1,39 @@
+.menu-foods {
+	width: 100%;
+	height: 60vh;
+
+	.menu-foods-background {
+		width: 100%;
+		height: 90%;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		border-radius: 15px;
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
+		padding-bottom: 2rem;
+		cursor: pointer;
+
+		&:hover {
+			.cart-button {
+				visibility: visible;
+			}
+		}
+	}
+
+	.menu-foods-details {
+		width: 100%;
+		height: 10%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 10px;
+		text-transform: capitalize;
+	}
+
+	.cart-button {
+		visibility: hidden;
+		transition: 100ms ease-in-out;
+	}
+}

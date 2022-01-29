@@ -1,194 +1,103 @@
-
-// hamburger
-#menu-bar {
-  font-size: 3rem;
-  cursor: pointer;
-  color: #222;
-  border: 0.1rem solid #666;
-  border-radius: 0.3rem;
-  padding: 0.5rem 1.5rem;
-  display: none;
-}
-
 // Header
 .header {
-  width: 100%;
-  height: 12vh;
-  text-align: center;
-  font-size: 3.5rem;
-  color: #666;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: #fff;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+	width: 100%;
+	font-size: 2.5rem;
+	color: #666;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 
-  .logo {
-    width: 30%;
-    height: 12vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bolder;
-    color: #666;
-    letter-spacing: 0.1em;
-    margin: 1rem;
-    i {
-      padding-right: 0.8rem;
-      color: var(--green);
-    }
-    :visited {
-      color: #222;
-    }
-    :hover {
-      color: var(--green);
-      animation: trans 2s ease-in-out infinite;
-    }
-    .logo-name{
-      font-size: 2.5rem;
-    }
-  }
+	.bar {
+		color: #333;
+	}
+	.logo {
+		width: 30%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: bolder;
+		color: #666;
+		letter-spacing: 0.1em;
+		margin: 1rem 0;
+		i {
+			padding-right: 0.8rem;
+			color: var(--green);
+		}
+		:visited {
+			color: #222;
+		}
+		:hover {
+			color: var(--green);
+			animation: trans 2s ease-in-out infinite;
+		}
+		.logo-name {
+			font-size: 2.5rem;
+		}
+	}
 
-  .navbar-head {
-    width: 70%;
-    height: 15vh;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding-right: 5rem;
+	.navbar-collapse {
+		flex-grow: 0;
+	}
 
-    .links {
-      font-size: 1.7rem;
-      margin-left: 1.7rem;
-      color: #222;
-      display: inline;
-      padding: 1.4rem;
+	.navbar-head {
+		.links {
+			font-size: 1.7rem;
+			margin-left: 1.7rem;
+			color: #222;
+			display: inline;
+			padding: 1.4rem;
 
-      .link{
-        
-      &:visited {
-        color: #222;
-      }
-      &:hover {
-        color: var(--green);
-      }
-      }
-      i {
-        padding-right: 0.8rem;
-      }
-    }
-    .last{
-      padding: 0 !important;
-      font-size: 1.7rem;
-      margin-left: 1.7rem;
-      color: #222;
-      display: inline;
-      padding: 1.4rem;
-
-      :visited {
-        color: #222;
-      }
-      i {
-        padding-right: 0.8rem;
-      }
-    }
-  }
-  
+			.link {
+				&:visited {
+					color: #222;
+				}
+				&:hover {
+					color: var(--green);
+				}
+			}
+			i {
+				padding-right: 0.8rem;
+			}
+		}
+	}
 }
+
 /* media queries  */
 
 @media (max-width: 991px) {
-  html {
-    font-size: 55%;
-  }
+	html {
+		font-size: 55%;
+	}
 
-  header {
-    padding: 2rem;
-  }
+	header {
+		padding: 2rem;
+	}
 
-  section {
-    padding: 2rem;
-  }
-  .logo {
-    width: 40%;
-  }
-}
-
-
-@media (max-width: 768px) {
-  #menu-bar {
-    display: initial;
-  }
-
-  header .navbar-head {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #f7f7f7;
-    border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-  }
-
-  header .navbar-head.active {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  }
-
-  header .navbar-head a {
-    margin: 1.5rem;
-    padding: 1.5rem;
-    display: block;
-    border: 0.2rem solid rgba(0, 0, 0, 0.1);
-    border-left: 0.5rem solid var(--green);
-    background: #fff;
-  }
+	section {
+		padding: 2rem;
+	}
 }
 
 @media (max-width: 710px) {
-  
-  .logo {
-    .logo-name{
-      font-size: 2rem !important;
-    }
-    i{
-      font-size: 2.3rem !important;
-      padding-right: 0rem !important;
-    }
-  }
+	.logo {
+		width: 50% !important;
+	}
 }
 
 @media (max-width: 470px) {
-  html {
-    font-size: 50%;
-  }
-  .order .row form .inputBox input {
-    width: 100%;
-  }
-  .logo {
-    justify-content: flex-start !important;
-    width: 50% !important;
-    .logo-name{
-      font-size: 2.4rem !important;
-    }
-    i{
-      font-size: 2.6rem !important;
-    }
-  }
-}
-
-@media (max-width: 390px) {
-  .logo {
-    justify-content: flex-start !important;
-    .logo-name{
-      font-size: 2.1rem !important;
-    }
-    i{
-      font-size: 2.3rem !important;
-    }
-  }
+	html {
+		font-size: 50%;
+	}
+	.order .row form .inputBox input {
+		width: 100%;
+	}
+	.logo {
+		.logo-name {
+			font-size: 2.4rem !important;
+		}
+		i {
+			font-size: 2.6rem !important;
+		}
+	}
 }

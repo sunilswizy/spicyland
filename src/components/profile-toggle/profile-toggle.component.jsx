@@ -3,7 +3,7 @@ import "./profile-toggle.styles.scss";
 
 import GoogleBtn from "../Google-btn/google-btn.component";
 
-import { auth } from "../pages/firebase/firebase.config";
+import { auth } from "../../pages/firebase/firebase.config";
 import { signOut } from "firebase/auth";
 
 const ProfileToggle = ({ noImage, currentUser }) => {
@@ -11,7 +11,7 @@ const ProfileToggle = ({ noImage, currentUser }) => {
 
 	return (
 		<div className='profile-toggle'>
-			<div>
+			<div className='profile-toggle-img-con'>
 				{!noImage && (
 					<img
 						src={photoURL}

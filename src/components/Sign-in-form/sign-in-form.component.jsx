@@ -7,7 +7,7 @@ import GoogleBtn from "../Google-btn/google-btn.component";
 
 import { Link } from "react-router-dom";
 
-import { signInWithGoogle, auth } from "../pages/firebase/firebase.config";
+import { signInWithGoogle, auth } from "../../pages/firebase/firebase.config";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 const SignInForm = () => {
@@ -38,7 +38,7 @@ const SignInForm = () => {
 	};
 
 	return (
-		<div className='container sign-in-form'>
+		<div className='sign-in-form'>
 			<div className='sign-in-form-headings'>
 				<h2 className='sign-in-form-title'>I already have an account!</h2>
 				<span className='sign-in-form-subtitle'>
@@ -48,22 +48,22 @@ const SignInForm = () => {
 			<div className='col-md-6'>
 				<form onSubmit={handleSubmit}>
 					<div className='sign-in-form-con'>
+						<label className='sign-in-form-label'>Username</label>
 						<InputBox
 							value={email}
 							name='email'
 							type='text'
-							onChange={handleChange}>
-							Email
-						</InputBox>
+							onChange={handleChange}
+						/>
 					</div>
 					<div className='sign-in-form-con'>
+						<label className='sign-in-form-label'>Password</label>
 						<InputBox
 							value={password}
 							name='password'
 							type='password'
-							onChange={handleChange}>
-							Password{" "}
-						</InputBox>
+							onChange={handleChange}
+						/>
 					</div>
 
 					<div className='form-in-sign-btn'>
