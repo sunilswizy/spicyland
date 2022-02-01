@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 
 import Homepage from "./pages/Homepage/homepage.component";
@@ -9,6 +9,9 @@ import Contact from "./components/Contact/contact.component";
 import Search from "./components/Search/search.component";
 import SignUpForm from "./components/Sign-up-form/sign-up-form.component";
 import SignInForm from "./components/Sign-in-form/sign-in-form.component";
+import Checkout from "./pages/Checkout/checkout.component";
+
+import Footer from "./components/Footer/footer.component";
 
 import ErrorBoundary from "./pages/Error-boundary/error-boundary.component";
 
@@ -21,9 +24,10 @@ import {
 import { onAuthStateChanged } from "firebase/auth";
 import { onSnapshot } from "firebase/firestore";
 
-const App = () => {
-	const [currentUser, setcurrentUser] = useState(null);
+import { connect } from "react-redux";
+import { setCurrentUser } from "./redux/user/actions";
 
+const App = ({ currentUser, setCurrentUser }) => {
 	useEffect(() => {
 		let unSubscribe;
 		const checkAuth = async () => {
@@ -32,11 +36,11 @@ const App = () => {
 					const userRef = await createUserProfileDocument(userAuth);
 
 					onSnapshot(userRef, user => {
-						setcurrentUser({ ...user.data(), id: user.id });
+						setCurrentUser({ ...user.data(), id: user.id });
 					});
 				}
 
-				setcurrentUser(userAuth);
+				setCurrentUser(userAuth);
 			});
 		};
 		checkAuth();
@@ -46,7 +50,7 @@ const App = () => {
 
 	return (
 		<div>
-			<Header profile={currentUser} />
+			<Header />
 			<ErrorBoundary>
 				<Switch>
 					<Route exact path='/' component={Homepage} />
@@ -54,18 +58,30 @@ const App = () => {
 					<Route path='/search' component={Search} />
 					<Route path='/contact' component={Contact} />
 					<Route
+						exact
 						path='/signin'
 						render={() => (currentUser ? <Redirect to='/' /> : <SignInForm />)}
 					/>
 					<Route
+						exact
 						path='/signup'
 						render={() => (currentUser ? <Redirect to='/' /> : <SignUpForm />)}
 					/>
 					<Route path='/menu/:food' component={SingleItem} />
+					<Route exact path='/checkout' component={Checkout} />
 				</Switch>
+				<Footer />
 			</ErrorBoundary>
 		</div>
 	);
 };
 
-export default App;
+const mapStateToProps = ({ user: { currentUser } }) => ({
+	currentUser,
+});
+
+const mapDispatchToProps = dispatch => ({
+	setCurrentUser: user => dispatch(setCurrentUser(user)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

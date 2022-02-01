@@ -6,6 +6,19 @@
 	opacity: 0.9;
 }
 
+.profile-name-log {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+
+	&:hover {
+		color: var(--green);
+	}
+}
+
 .profile-img-active {
 	opacity: 1;
 	border: 1.4px solid rgb(119, 119, 119);

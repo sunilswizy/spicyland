@@ -5,7 +5,9 @@ import CartIcon from "../Cart-icon/cart-icon.component";
 import ProfileImg from "../Profile-img/profile-img.component";
 import { Link } from "react-router-dom";
 
-const Header = ({ profile }) => {
+import { connect } from "react-redux";
+
+const Header = ({ currentUser }) => {
 	return (
 		<nav className='header navbar navbar-expand-lg'>
 			<div className='container-fluid'>
@@ -16,7 +18,7 @@ const Header = ({ profile }) => {
 				</div>
 
 				<button
-					class='navbar-toggler'
+					className='navbar-toggler'
 					type='button'
 					data-bs-toggle='collapse'
 					data-bs-target='#navbarSupportedContent'
@@ -54,8 +56,8 @@ const Header = ({ profile }) => {
 						</div>
 
 						<div className='links nav-item'>
-							{profile ? (
-								<ProfileImg currentUser={profile} />
+							{currentUser ? (
+								<ProfileImg />
 							) : (
 								<Link to='/signin' className='link disable-select nav-link'>
 									<i className='far fa-user'></i> Sign In
@@ -69,4 +71,8 @@ const Header = ({ profile }) => {
 	);
 };
 
-export default Header;
+const mapStateToProps = ({ user: { currentUser } }) => ({
+	currentUser,
+});
+
+export default connect(mapStateToProps)(Header);

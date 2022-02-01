@@ -1,0 +1,13 @@
+.dialogBox {
+	width: 350px;
+}
+
+.dialogActions {
+	justify-content: space-between !important;
+	padding: 8px 30px !important;
+	h1 {
+		color: #333;
+		display: flex;
+		align-items: center;
+	}
+}

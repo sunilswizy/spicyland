@@ -1,4 +1,5 @@
 import React from "react";
+import "./thriple-button.styles.scss";
 
 import PropTypes from "prop-types";
 import ButtonUnstyled, {
@@ -6,19 +7,20 @@ import ButtonUnstyled, {
 } from "@mui/base/ButtonUnstyled";
 import { styled } from "@mui/system";
 
-const ButtonRoot = React.forwardRef(function ButtonRoot(props, ref) {
-	const { children, cart, ...other } = props;
+import { connect } from "react-redux";
+import { addCart } from "../../redux/cart/action";
+import { removeCart } from "../../redux/cart/action";
+import { addItemToCart } from "../../redux/cart/action";
+import { removeItemFromCart } from "../../redux/cart/action";
 
-	const width = cart ? 250 : 150;
+const ButtonRoot = React.forwardRef(function ButtonRoot(props, ref) {
+	const { children, ...other } = props;
 
 	return (
-		<svg width={width} height='50' {...other} ref={ref}>
-			<polygon points={`0,50 0,0 ${width},0 ${width},50`} className='bg' />
-			<polygon
-				points={`0,50 0,0 ${width},0 ${width},50`}
-				className='borderEffect'
-			/>
-			<foreignObject x='0' y='0' width={width} height='50'>
+		<svg width='50' height='50' {...other} ref={ref}>
+			<polygon points='0,50 0,0 50,0 50,50' className='bg' />
+			<polygon points='0,50 0,0 50,0 50,50' className='borderEffect' />
+			<foreignObject x='0' y='0' width='50' height='50'>
 				<div className='content'>{children}</div>
 			</foreignObject>
 		</svg>
@@ -41,7 +43,7 @@ const blue = {
 };
 
 const CustomButtonRoot = styled(ButtonRoot)(
-	({ theme, dialog }) => `
+	({ theme, disabled }) => `
     overflow: visible;
     cursor: pointer;
     --main-color: ${theme.palette.mode === "light" ? blue[600] : blue[100]};
@@ -57,16 +59,15 @@ const CustomButtonRoot = styled(ButtonRoot)(
     & .bg {
       stroke: var(--main-color);
       stroke-width: 1;
-      filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.1));
-      fill: ${dialog ? "#119811" : "transparent"};
+      fill: #119811;
     }
   
     & .borderEffect {
-      stroke:  #abdd9d;
-      stroke-width: ${dialog ? 0 : 2} ;
-      stroke-dasharray: ${dialog ? 0 : "150 600"};
-      stroke-dashoffset: ${dialog ? 0 : 150};
-      fill: transparent;
+    //   stroke: #abdd9d;
+    //   stroke-width: 2;
+    //   stroke-dasharray: 50 600;
+    //   stroke-dashoffset: 50;
+    //   fill: transparent;
     }
   
     &:hover,
@@ -74,7 +75,6 @@ const CustomButtonRoot = styled(ButtonRoot)(
       .borderEffect {
         stroke-dashoffset: -600;
       }
-  
       .bg {
         fill: #119811;
       }
@@ -82,16 +82,17 @@ const CustomButtonRoot = styled(ButtonRoot)(
   
     &:focus,
     &.${buttonUnstyledClasses.focusVisible} {
-      outline: 2px solid ${
-				theme.palette.mode === "dark" ? blue[400] : blue[200]
-			};
-      outline-offset: 2px;
+      outline: 0px solid green; 
+      outline-offset: 0px;
     }
   
     &.${buttonUnstyledClasses.active} { 
       & .bg {
-        fill: var(--active-color);
+        fill: ${disabled ? "green" : "var(--active-color)"} ;
         transition: fill 300ms ease-out;
+      }
+      & .content {
+          color: #119811
       }
     }
   
@@ -99,7 +100,6 @@ const CustomButtonRoot = styled(ButtonRoot)(
       pointer-events: none;
   
       & .content {
-        width: 100%;
         font-size:1.5rem;
         font-family: IBM Plex Sans, sans-serif;
         font-weight: 500;
@@ -126,4 +126,40 @@ const CartButton = ({ children, ...others }) => {
 	return <SvgButton {...others}>{children}</SvgButton>;
 };
 
-export default CartButton;
+const TripleButton = ({
+	addCart,
+	removeCart,
+	item,
+	addItemToCart,
+	removeItemFromCart,
+	cartItem,
+}) => {
+	const handleAdd = e => {
+		e.stopPropagation();
+		addItemToCart(item);
+		addCart();
+	};
+
+	const handleRemove = e => {
+		e.stopPropagation();
+		removeCart();
+		removeItemFromCart(item);
+	};
+
+	return (
+		<div className='triple-button-con disable-select'>
+			<CartButton onClick={handleRemove}>-</CartButton>
+			<CartButton disabled onClick={e => e.stopPropagation()}>
+				{cartItem.quantity}
+			</CartButton>
+			<CartButton onClick={handleAdd}>+</CartButton>
+		</div>
+	);
+};
+
+export default connect(null, {
+	addCart,
+	removeCart,
+	addItemToCart,
+	removeItemFromCart,
+})(TripleButton);

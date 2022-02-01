@@ -81,7 +81,7 @@ const MenuItem = ({ title, imageUrl, linkUrl, history }) => {
 				alignItems: "center",
 				margin: "2rem 0",
 			}}
-			onClick={() => history.push(`${linkUrl}`)}>
+			onClick={linkUrl ? () => history.push(`${linkUrl}`) : () => {}}>
 			<ImageButton
 				focusRipple
 				style={{
@@ -94,6 +94,7 @@ const MenuItem = ({ title, imageUrl, linkUrl, history }) => {
 						component='span'
 						variant='subtitle1'
 						color='inherit'
+						style={{ textTransform: "capitalize" }}
 						sx={{
 							position: "relative",
 							p: 4,

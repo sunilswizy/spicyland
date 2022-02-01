@@ -6,10 +6,10 @@ const directory_data = [
 		linkUrl: "menu/pizza",
 	},
 	{
-		title: "noodeels",
+		title: "noodels",
 		imageUrl: "https://i.ibb.co/nmszds5/noodles.jpg",
 		id: 2,
-		linkUrl: "menu/noodles",
+		linkUrl: "menu/noodels",
 	},
 	{
 		title: "biriyani",

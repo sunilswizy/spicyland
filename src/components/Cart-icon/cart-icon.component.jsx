@@ -1,39 +1,35 @@
-import React, { useState } from "react";
-import { ReactComponent as Cart } from "../../assests/cart.svg";
+import React from "react";
+import { ReactComponent as CartBag } from "../../assests/cart.svg";
 import "./cart-icon.styles.scss";
 
-const CartIcon = () => {
-	const [emptyHidden, setEmptyHidden] = useState(true);
+import Cart from "../Cart-component/cart.component";
+import { connect } from "react-redux";
+import { cartToggle } from "../../redux/cart/action";
 
+const CartIcon = ({ itemsCount, isHidden, cartToggle }) => {
 	return (
 		<>
 			<div
 				className='cart-icon  disable-select'
-				onMouseOver={() => setEmptyHidden(false)}
-				onMouseOut={() => setEmptyHidden(true)}>
-				<Cart className='icon' />
-				<span className='qty'>1</span>
-				Cart
-			</div>
-
-			{!emptyHidden && (
-				<div className='empty-cart  disable-select'>
-					<div className='empty-card-title'>
-						<h1>Cart Empty !</h1>
-					</div>
-					<div>
-						<span className='empty-cart-sub'>
-							Good food is always cooking! Go ahead, order some yummy items from
-							the menu.
-						</span>
-					</div>
-					{/* <div className="empty-cart-btn">
-                    <ButtonBox>Menu</ButtonBox>
-                </div> */}
+				onClick={() => cartToggle(!isHidden)}>
+				<div className='cart-container'>
+					<CartBag className='icon'>1sda</CartBag>
+					<span className='qty'>{itemsCount}</span>
 				</div>
-			)}
+				<span className='cart-content'>Cart</span>
+			</div>
+			{!isHidden && <Cart />}
 		</>
 	);
 };
 
-export default CartIcon;
+const mapStateToProps = state => ({
+	itemsCount: state.cart.itemsCount,
+	isHidden: state.cart.isHidden,
+});
+
+const mapDispatchToProps = dispatch => ({
+	cartToggle: val => dispatch(cartToggle(val)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);

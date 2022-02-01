@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./profile-img.styles.scss";
 import ProfileToggle from "../profile-toggle/profile-toggle.component";
 
+import { connect } from "react-redux";
+
 const ProfileImg = ({ currentUser }) => {
 	const [ishidden, setIsHidden] = useState(true);
 	const { photoURL, displayName } = currentUser;
@@ -15,20 +17,21 @@ const ProfileImg = ({ currentUser }) => {
 						className={`profile-img ${ishidden ? "" : "profile-img-active"}`}
 						onClick={() => setIsHidden(!ishidden)}
 					/>
-					{!ishidden && <ProfileToggle currentUser={currentUser} />}
 				</>
 			) : (
-				<>
-					<i
-						className='far fa-user nameIcon disable-select'
-						onClick={() => setIsHidden(!ishidden)}>
-						&nbsp;{displayName}
-					</i>
-					{!ishidden && <ProfileToggle noImage currentUser={currentUser} />}
-				</>
+				<div
+					className='profile-name-log disable-select'
+					onClick={() => setIsHidden(!ishidden)}>
+					<i className='far fa-user nameIcon'></i> {displayName}
+				</div>
 			)}
+			{!ishidden && <ProfileToggle />}
 		</>
 	);
 };
 
-export default ProfileImg;
+const mapStateToProps = state => ({
+	currentUser: state.user.currentUser,
+});
+
+export default connect(mapStateToProps)(ProfileImg);

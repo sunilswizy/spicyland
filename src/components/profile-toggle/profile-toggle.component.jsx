@@ -6,13 +6,15 @@ import GoogleBtn from "../Google-btn/google-btn.component";
 import { auth } from "../../pages/firebase/firebase.config";
 import { signOut } from "firebase/auth";
 
+import { connect } from "react-redux";
+
 const ProfileToggle = ({ noImage, currentUser }) => {
 	const { displayName, email, photoURL } = currentUser;
 
 	return (
 		<div className='profile-toggle'>
 			<div className='profile-toggle-img-con'>
-				{!noImage && (
+				{currentUser?.photoURL && (
 					<img
 						src={photoURL}
 						alt={displayName}
@@ -24,15 +26,19 @@ const ProfileToggle = ({ noImage, currentUser }) => {
 				<h2 className='progile-toggle-name'>{displayName}</h2>
 				<span className='profile-toggle-email'>{email}</span>
 			</div>
-			{noImage ? (
-				<GoogleBtn noImage onClick={async () => await signOut(auth)}>
+			{currentUser?.photoURL ? (
+				<GoogleBtn onClick={async () => await signOut(auth)}>Signout</GoogleBtn>
+			) : (
+				<GoogleBtn notGoogleLog onClick={async () => await signOut(auth)}>
 					Signout
 				</GoogleBtn>
-			) : (
-				<GoogleBtn onClick={async () => await signOut(auth)}>Signout</GoogleBtn>
 			)}
 		</div>
 	);
 };
 
-export default ProfileToggle;
+const mapStateToProps = state => ({
+	currentUser: state.user.currentUser,
+});
+
+export default connect(mapStateToProps)(ProfileToggle);
