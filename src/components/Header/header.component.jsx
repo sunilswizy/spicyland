@@ -6,6 +6,8 @@ import ProfileImg from "../Profile-img/profile-img.component";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
+import { selectCurrentUser } from "../../redux/user/selector";
+import { createStructuredSelector } from "reselect";
 
 const Header = ({ currentUser }) => {
 	return (
@@ -55,7 +57,7 @@ const Header = ({ currentUser }) => {
 							<CartIcon />
 						</div>
 
-						<div className='links nav-item'>
+						<div className='links nav-item disable-select'>
 							{currentUser ? (
 								<ProfileImg />
 							) : (
@@ -71,8 +73,8 @@ const Header = ({ currentUser }) => {
 	);
 };
 
-const mapStateToProps = ({ user: { currentUser } }) => ({
-	currentUser,
+const mapStateToProps = createStructuredSelector({
+	currentUser: selectCurrentUser,
 });
 
 export default connect(mapStateToProps)(Header);

@@ -22,7 +22,8 @@ const SingleItem = () => {
 			</div>
 			<div className='single-item-items'>
 				{data.items.map(({ ...others }) => {
-					return <MenuFoods key={uuid()} {...others} />;
+					const id = uuid();
+					return <MenuFoods key={id} id={id} {...others} />;
 				})}
 			</div>
 		</div>

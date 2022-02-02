@@ -7,6 +7,8 @@ import { auth } from "../../pages/firebase/firebase.config";
 import { signOut } from "firebase/auth";
 
 import { connect } from "react-redux";
+import { selectCurrentUser } from "../../redux/user/selector";
+import { createStructuredSelector } from "reselect";
 
 const ProfileToggle = ({ noImage, currentUser }) => {
 	const { displayName, email, photoURL } = currentUser;
@@ -37,8 +39,8 @@ const ProfileToggle = ({ noImage, currentUser }) => {
 	);
 };
 
-const mapStateToProps = state => ({
-	currentUser: state.user.currentUser,
+const mapStateToProps = createStructuredSelector({
+	currentUser: selectCurrentUser,
 });
 
 export default connect(mapStateToProps)(ProfileToggle);

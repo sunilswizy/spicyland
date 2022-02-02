@@ -8,8 +8,6 @@ import ButtonUnstyled, {
 import { styled } from "@mui/system";
 
 import { connect } from "react-redux";
-import { addCart } from "../../redux/cart/action";
-import { removeCart } from "../../redux/cart/action";
 import { addItemToCart } from "../../redux/cart/action";
 import { removeItemFromCart } from "../../redux/cart/action";
 
@@ -43,7 +41,7 @@ const blue = {
 };
 
 const CustomButtonRoot = styled(ButtonRoot)(
-	({ theme, disabled }) => `
+	({ theme, disabled, inverted, center }) => `
     overflow: visible;
     cursor: pointer;
     --main-color: ${theme.palette.mode === "light" ? blue[600] : blue[100]};
@@ -57,9 +55,9 @@ const CustomButtonRoot = styled(ButtonRoot)(
     }
     
     & .bg {
-      stroke: var(--main-color);
+      stroke: ${inverted ? "grey" : "var(--main-color)"} ;
       stroke-width: 1;
-      fill: #119811;
+      fill: ${inverted ? "white" : "#119811"};
     }
   
     & .borderEffect {
@@ -76,7 +74,7 @@ const CustomButtonRoot = styled(ButtonRoot)(
         stroke-dashoffset: -600;
       }
       .bg {
-        fill: #119811;
+        fill: ${inverted ? "white" : "#119811"};
       }
     }
   
@@ -108,7 +106,7 @@ const CustomButtonRoot = styled(ButtonRoot)(
         display: flex;
         align-items: center;
         justify-content: center;
-        color: rgb(231, 231, 231);
+        color: ${inverted ? "#119811" : "rgb(231, 231, 231)"} ;
         text-transform: uppercase;
       }
   
@@ -127,39 +125,42 @@ const CartButton = ({ children, ...others }) => {
 };
 
 const TripleButton = ({
-	addCart,
-	removeCart,
 	item,
 	addItemToCart,
 	removeItemFromCart,
 	cartItem,
+	inverted,
 }) => {
 	const handleAdd = e => {
 		e.stopPropagation();
 		addItemToCart(item);
-		addCart();
 	};
 
 	const handleRemove = e => {
 		e.stopPropagation();
-		removeCart();
 		removeItemFromCart(item);
 	};
 
 	return (
 		<div className='triple-button-con disable-select'>
-			<CartButton onClick={handleRemove}>-</CartButton>
-			<CartButton disabled onClick={e => e.stopPropagation()}>
+			<CartButton inverted={inverted} onClick={handleRemove}>
+				-
+			</CartButton>
+			<CartButton
+				center='noBorder'
+				inverted={inverted}
+				disabled
+				onClick={e => e.stopPropagation()}>
 				{cartItem.quantity}
 			</CartButton>
-			<CartButton onClick={handleAdd}>+</CartButton>
+			<CartButton inverted={inverted} onClick={handleAdd}>
+				+
+			</CartButton>
 		</div>
 	);
 };
 
 export default connect(null, {
-	addCart,
-	removeCart,
 	addItemToCart,
 	removeItemFromCart,
 })(TripleButton);

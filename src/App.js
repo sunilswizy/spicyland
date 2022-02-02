@@ -10,7 +10,6 @@ import Search from "./components/Search/search.component";
 import SignUpForm from "./components/Sign-up-form/sign-up-form.component";
 import SignInForm from "./components/Sign-in-form/sign-in-form.component";
 import Checkout from "./pages/Checkout/checkout.component";
-
 import Footer from "./components/Footer/footer.component";
 
 import ErrorBoundary from "./pages/Error-boundary/error-boundary.component";
@@ -26,6 +25,8 @@ import { onSnapshot } from "firebase/firestore";
 
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/actions";
+import { selectCurrentUser } from "./redux/user/selector";
+import { createStructuredSelector } from "reselect";
 
 const App = ({ currentUser, setCurrentUser }) => {
 	useEffect(() => {
@@ -72,7 +73,11 @@ const App = ({ currentUser, setCurrentUser }) => {
 						render={() => (currentUser ? <Redirect to='/' /> : <SignUpForm />)}
 					/>
 					<Route path='/menu/:food' component={SingleItem} />
-					<Route exact path='/checkout' component={Checkout} />
+					<Route
+						exact
+						path='/checkout'
+						render={() => (currentUser ? <Checkout /> : <SignInForm />)}
+					/>
 				</Switch>
 				<Footer />
 			</ErrorBoundary>
@@ -80,8 +85,8 @@ const App = ({ currentUser, setCurrentUser }) => {
 	);
 };
 
-const mapStateToProps = ({ user: { currentUser } }) => ({
-	currentUser,
+const mapStateToProps = createStructuredSelector({
+	currentUser: selectCurrentUser,
 });
 
 const mapDispatchToProps = dispatch => ({

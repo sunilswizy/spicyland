@@ -21,7 +21,8 @@ const MenuOverview = ({ title, routeName, items }) => {
 			</div>
 			<div className='menu-overview-items'>
 				{randItems.map(({ ...others }) => {
-					return <MenuFoods key={uuid()} {...others} />;
+					const id = uuid();
+					return <MenuFoods key={id} id={id} {...others} />;
 				})}
 			</div>
 		</div>

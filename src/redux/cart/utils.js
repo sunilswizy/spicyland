@@ -1,27 +1,35 @@
 export const addingItemToaCart = (cart, newItem) => {
-	const check = cart.find(el => el.name === newItem.name);
-	const filtering = cart.filter(el => el.name !== newItem.name);
-
-	if (check) {
-		return [...filtering, { ...newItem, quantity: check.quantity + 1 }];
+	const exists = cart.find(el => el.name === newItem.name);
+	if (exists) {
+		return cart.map(item => {
+			if (item.name === newItem.name) {
+				return {
+					...item,
+					quantity: item.quantity + 1,
+				};
+			}
+			return item;
+		});
 	}
 
 	return [...cart, { ...newItem, quantity: 1 }];
 };
 
 export const removingItemFromaCart = (cart, removeItem) => {
-	const check = cart.find(el => el.name === removeItem.name);
-	const filtering = cart.filter(el => el.name !== removeItem.name);
+	const exists = cart.find(el => el.name === removeItem.name);
 
-	if (check.quantity === 1) {
-		return [...filtering];
+	if (exists.quantity === 1) {
+		return cart.filter(el => el.name !== removeItem.name);
 	}
 
-	return [...filtering, { ...removeItem, quantity: check.quantity - 1 }];
+	return cart.map(item => {
+		if (item.name === removeItem.name) {
+			return { ...item, quantity: item.quantity - 1 };
+		}
+		return item;
+	});
 };
 
-export const getTotalPrice = cart => {
-	const price = cart.reduce((acc, el) => acc + el.price * el.quantity, 0);
-	console.log(cart, price);
-	return price;
+export const removeItem = (cart, removeItem) => {
+	return cart.filter(item => item.name !== removeItem.name);
 };

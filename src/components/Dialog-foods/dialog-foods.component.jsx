@@ -12,7 +12,6 @@ import "./dialog.foods.styles.scss";
 import TripleButton from "../Thriple-button/thriple-button.component";
 import MenuItem from "../styled-button/styled-button.component";
 import CartButton from "../Cart-button/cart-button.component";
-import { Typography } from "@mui/material";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 	"& .MuiDialogContent-root": {
@@ -74,7 +73,10 @@ const DialogFoods = ({ open, handleClose, item, cartItem, handleClick }) => {
 					</div>
 				) : (
 					<div className='cart-button'>
-						<CartButton dialog className='disable-select' onClick={handleClick}>
+						<CartButton
+							dialog='true'
+							className='disable-select'
+							onClick={handleClick}>
 							ADD
 						</CartButton>
 					</div>

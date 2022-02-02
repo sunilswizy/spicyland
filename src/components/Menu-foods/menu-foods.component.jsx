@@ -3,20 +3,14 @@ import "./menu-foods.styles.scss";
 
 import CartButton from "../Cart-button/cart-button.component";
 import { connect } from "react-redux";
-import { addCart } from "../../redux/cart/action";
 import { addItemToCart } from "../../redux/cart/action";
 import DialogFoods from "../Dialog-foods/dialog-foods.component";
 
 import TripleButton from "../Thriple-button/thriple-button.component";
+import { createStructuredSelector } from "reselect";
+import { selectCartItems } from "../../redux/cart/selector";
 
-const MenuFoods = ({
-	name,
-	imageUrl,
-	price,
-	addCart,
-	addItemToCart,
-	cartItems,
-}) => {
+const MenuFoods = ({ name, imageUrl, price, id, addItemToCart, cartItems }) => {
 	const [open, setOpen] = useState(false);
 
 	const handleClickOpen = () => {
@@ -27,6 +21,7 @@ const MenuFoods = ({
 	};
 
 	const item = {
+		id,
 		name,
 		imageUrl,
 		price,
@@ -34,7 +29,6 @@ const MenuFoods = ({
 
 	const handleClick = e => {
 		e.stopPropagation();
-		addCart();
 		addItemToCart(item);
 	};
 
@@ -74,8 +68,8 @@ const MenuFoods = ({
 	);
 };
 
-const mapStateToProps = ({ cart: { cartItems } }) => ({
-	cartItems,
+const mapStateToProps = createStructuredSelector({
+	cartItems: selectCartItems,
 });
 
-export default connect(mapStateToProps, { addCart, addItemToCart })(MenuFoods);
+export default connect(mapStateToProps, { addItemToCart })(MenuFoods);

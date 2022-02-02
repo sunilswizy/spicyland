@@ -40,7 +40,7 @@ const SignUpForm = () => {
 				createUserProfileDocument(userAuth.user, { displayName })
 			);
 		} catch (e) {
-			console.log("Error", e);
+			alert("The Account is already created!");
 		}
 
 		setFormvalues({
