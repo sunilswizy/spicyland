@@ -35,15 +35,15 @@ export const cartReducer = (state = initialState, action) => {
 		case ADD_ITEM_TO_CART:
 			return {
 				...state,
-				cartItems: addingItemToaCart(state.cartItems, action.payload),
 				price: getTotalPrice(state.cartItems),
+				cartItems: addingItemToaCart(state.cartItems, action.payload),
 			};
 
 		case REMOVE_ITEM_TO_CART:
 			return {
 				...state,
-				cartItems: removingItemFromaCart(state.cartItems, action.payload),
 				price: getTotalPrice(state.cartItems),
+				cartItems: removingItemFromaCart(state.cartItems, action.payload),
 			};
 
 		case CART_TOGGGLE:

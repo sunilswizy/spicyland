@@ -22,5 +22,6 @@ export const removingItemFromaCart = (cart, removeItem) => {
 
 export const getTotalPrice = cart => {
 	const price = cart.reduce((acc, el) => acc + el.price * el.quantity, 0);
+	console.log(cart, price);
 	return price;
 };

@@ -1,7 +1,7 @@
 .cart-box {
 	position: absolute;
 	width: 300px;
-	height: 350px;
+	height: 370px;
 	background: white;
 	z-index: 1000;
 	right: 11%;
@@ -23,6 +23,12 @@
 			width: 100%;
 			display: flex;
 			justify-content: center;
+		}
+		.cart-price {
+			width: 100%;
+			display: flex;
+			justify-content: flex-end;
+			padding: 10px;
 		}
 	}
 	.cart-list {

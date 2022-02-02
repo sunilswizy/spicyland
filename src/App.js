@@ -54,7 +54,11 @@ const App = ({ currentUser, setCurrentUser }) => {
 			<ErrorBoundary>
 				<Switch>
 					<Route exact path='/' component={Homepage} />
-					<Route exact path='/menu' component={Menu} />
+					<Route
+						exact
+						path='/menu'
+						render={({ ...props }) => <Menu {...props} title='Menu' />}
+					/>
 					<Route path='/search' component={Search} />
 					<Route path='/contact' component={Contact} />
 					<Route
