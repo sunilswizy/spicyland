@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACV,KAAK,EAAE,KAAK;CACZ;;AAED,AAAA,cAAc,CAAC;EACd,eAAe,EAAE,wBAAwB;EACzC,OAAO,EAAE,mBAAmB;CAM5B;;AARD,AAGC,cAHa,CAGb,EAAE,CAAC;EACF,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;CACnB",
+    "sources": [
+        "dialog.foods.styles.scss"
+    ],
+    "names": [],
+    "file": "dialog.foods.styles.css"
+}

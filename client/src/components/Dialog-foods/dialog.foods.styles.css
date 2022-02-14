@@ -1,0 +1,21 @@
+.dialogBox {
+  width: 350px;
+}
+
+.dialogActions {
+  -webkit-box-pack: justify !important;
+      -ms-flex-pack: justify !important;
+          justify-content: space-between !important;
+  padding: 8px 30px !important;
+}
+
+.dialogActions h1 {
+  color: #333;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=dialog.foods.styles.css.map */

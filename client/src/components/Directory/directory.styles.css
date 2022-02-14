@@ -1,0 +1,25 @@
+.directory {
+  width: 100%;
+  margin: 3rem 0;
+}
+
+.directory .directory-con {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+}
+
+.directory .directory-heading {
+  text-align: center;
+}
+
+.directory .directory-heading span {
+  color: var(--green);
+}
+
+.directory .directory-heading .directory-heading-name {
+  font-size: 5rem;
+}
+/*# sourceMappingURL=directory.styles.css.map */

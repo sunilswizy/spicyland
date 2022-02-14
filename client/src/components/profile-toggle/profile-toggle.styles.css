@@ -1,0 +1,55 @@
+.profile-toggle {
+  width: 15%;
+  position: absolute;
+  right: 0.5%;
+  background-color: #282c3f;
+  padding: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 4px rgba(34, 34, 34, 0.5);
+          box-shadow: 2px 2px 4px rgba(34, 34, 34, 0.5);
+  border-top: 5px solid var(--green);
+  gap: 15px;
+  z-index: 1000;
+}
+
+.profile-toggle .profile-toggle-img-con {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1rem;
+}
+
+.profile-toggle .profile-toggle-img {
+  border-radius: 100%;
+  width: 30%;
+  border: 1.4px solid #dfdfdf;
+  -webkit-box-shadow: 0px 0px 5px inset rgba(34, 34, 34, 0.5);
+          box-shadow: 0px 0px 5px inset rgba(34, 34, 34, 0.5);
+}
+
+.profile-toggle .progile-toggle-heading {
+  text-align: center;
+  margin-top: -10px;
+  color: #dfdbdb;
+}
+
+.profile-toggle .progile-toggle-name {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.profile-toggle .profile-toggle-email {
+  font-size: 1.1rem;
+}
+/*# sourceMappingURL=profile-toggle.styles.css.map */

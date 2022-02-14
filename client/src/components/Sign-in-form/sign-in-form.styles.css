@@ -1,0 +1,122 @@
+.sign-in-form {
+  width: 100%;
+  height: 88vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 3rem;
+  gap: 2rem;
+}
+
+.sign-in-form .sign-in-form-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sign-in-form .sign-in-form-con .sign-in-form-label {
+  width: 85%;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.sign-in-form .sign-in-form-title {
+  font-size: 4.7rem;
+  color: var(--green);
+}
+
+.sign-in-form .sign-in-form-subtitle {
+  font-size: 2rem;
+}
+
+.sign-in-form .form-in-sign-btn {
+  margin-top: 3rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 1050px) {
+  .sign-in-form .sign-in-form-con .sign-in-form-label {
+    width: 100%;
+  }
+  .sign-in-form .sign-in-form-title {
+    font-size: 3.5rem;
+  }
+  .sign-in-form .sign-in-form-subtitle {
+    font-size: 1.3rem;
+  }
+  .sign-in-form .sign-in-form-headings {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .sign-in-form .form-in-sign-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .sign-in-form .sign-in-form-title {
+    font-size: 2.5rem;
+  }
+}
+
+.sign-in-out-text {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sign-in-out-text .sign-in-out-heading {
+  font-size: 2.3rem;
+}
+
+.sign-in-out-text .sign-in-out-sub-heading {
+  cursor: pointer;
+  color: var(--green);
+}
+
+.sign-in-out-text .sign-in-out-sub-heading:hover {
+  text-decoration: underline;
+}
+/*# sourceMappingURL=sign-in-form.styles.css.map */

@@ -1,0 +1,77 @@
+.search-container {
+  width: 100%;
+  height: 88vh;
+}
+
+.search {
+  width: 100%;
+  height: 20vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.search .search-con {
+  width: 7%;
+  height: 55%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid black;
+  background-color: white;
+  border-right: none;
+}
+
+.search .search-con i {
+  font-size: 2.5rem;
+  color: var(--green);
+}
+
+.search .search-btn {
+  width: 7%;
+  height: 55%;
+  font-size: 1.2rem;
+  border: 1px solid black;
+  background-color: white;
+  border-left: none;
+  color: var(--green);
+  font-weight: bolder;
+  text-transform: uppercase;
+  letter-spacing: 0rem;
+  cursor: pointer;
+}
+
+.search .search-btn:hover {
+  color: #222;
+}
+
+.search .search-close {
+  width: 7%;
+  height: 55%;
+  font-size: 4rem;
+  background-color: #f7f7f7;
+  border-left: none;
+  color: #222;
+  font-weight: bolder;
+  text-transform: uppercase;
+  letter-spacing: 0rem;
+  margin: 0 2rem;
+  cursor: pointer;
+}
+
+.search .search-close:hover {
+  color: var(--green);
+}
+/*# sourceMappingURL=search.styles.css.map */
