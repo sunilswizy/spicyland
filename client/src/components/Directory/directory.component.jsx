@@ -7,7 +7,6 @@ import { selectData } from "../../redux/directory/selector";
 import { connect } from "react-redux";
 
 const Directory = ({ data }) => {
-	console.log(data);
 	return (
 		<div className='directory'>
 			<div className='directory-heading'>
@@ -16,8 +15,15 @@ const Directory = ({ data }) => {
 				</h1>
 			</div>
 			<div className='directory-con'>
-				{data.map(({ id, ...otherProps }) => {
-					return <MenuItem key={id} {...otherProps} />;
+				{data.map(({ id, dataAos, ...otherProps }) => {
+					return (
+						<div
+							data-aos={dataAos}
+							data-aos-offset='100'
+							data-aos-duration='600'>
+							<MenuItem key={id} {...otherProps} />;
+						</div>
+					);
 				})}
 			</div>
 		</div>

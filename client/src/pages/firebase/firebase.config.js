@@ -1,6 +1,14 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { getFirestore, setDoc, doc, getDoc } from "firebase/firestore";
+import {
+	getFirestore,
+	setDoc,
+	doc,
+	getDoc,
+	collection,
+	addDoc,
+	serverTimestamp,
+} from "firebase/firestore";
 
 const firebaseConfig = {
 	apiKey: "AIzaSyAGj_lKJPF2CWIfLMeuGCYgkFGUTPbeHjw",
@@ -32,7 +40,7 @@ export const createUserProfileDocument = async (userAuth, Additionaldata) => {
 
 	if (!snapShot.exists()) {
 		const { displayName, email, photoURL } = userAuth;
-		const createdAt = new Date().toLocaleString();
+		const createdAt = serverTimestamp();
 
 		try {
 			await setDoc(userRef, {
@@ -47,4 +55,14 @@ export const createUserProfileDocument = async (userAuth, Additionaldata) => {
 		}
 	}
 	return userRef;
+};
+
+export const sendAMessage = async message => {
+	const messageRef = collection(store, "messages");
+	await addDoc(messageRef, message);
+};
+
+export const sendAQuery = async query => {
+	const queryRef = collection(store, "query");
+	await addDoc(queryRef, query);
 };

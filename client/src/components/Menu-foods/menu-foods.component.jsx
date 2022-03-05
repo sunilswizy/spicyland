@@ -15,6 +15,7 @@ const MenuFoods = ({
 	name,
 	imageUrl,
 	price,
+	stock,
 	priceUrl,
 	addItemToCart,
 	cartItems,
@@ -34,6 +35,7 @@ const MenuFoods = ({
 		imageUrl,
 		price,
 		priceUrl,
+		stock,
 	};
 
 	const handleClick = e => {
@@ -42,6 +44,7 @@ const MenuFoods = ({
 	};
 
 	const cartItem = cartItems.find(el => el.name === name);
+	const isStockAvailable = cartItem ? cartItem.stock > 1 : true;
 
 	return (
 		<>
@@ -49,17 +52,23 @@ const MenuFoods = ({
 				<div
 					className='menu-foods-background'
 					style={{ backgroundImage: `url(${imageUrl})` }}>
-					{cartItem ? (
-						<div className='cart-triple-button'>
-							<TripleButton item={item} cartItem={cartItem} />
-						</div>
-					) : (
-						<div className='cart-button'>
-							<CartButton className='disable-select' onClick={handleClick}>
-								ADD
-							</CartButton>
-						</div>
-					)}
+					<>
+						{cartItem ? (
+							<div className='cart-triple-button'>
+								<TripleButton
+									item={item}
+									cartItem={cartItem}
+									isStockAvailable={isStockAvailable}
+								/>
+							</div>
+						) : (
+							<div className='cart-button'>
+								<CartButton className='disable-select' onClick={handleClick}>
+									ADD
+								</CartButton>
+							</div>
+						)}
+					</>
 				</div>
 				<div className='menu-foods-details'>
 					<h3>{name}</h3>
@@ -72,6 +81,7 @@ const MenuFoods = ({
 				item={item}
 				cartItem={cartItem}
 				handleClick={handleClick}
+				isStockAvailable={isStockAvailable}
 			/>
 		</>
 	);

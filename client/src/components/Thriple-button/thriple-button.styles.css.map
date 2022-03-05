@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AACC,kBADiB,CACjB,MAAM,CAAC;EACN,OAAO,EAAE,MAAM;EACf,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,MAAM;EACjB,WAAW,EAAE,yBAAyB;EACtC,WAAW,EAAE,GAAG;EAKhB,KAAK,EAAE,OAAkB;EACzB,cAAc,EAAE,SAAS;CACzB",
-    "sources": [
-        "thriple-button.styles.scss"
-    ],
-    "names": [],
-    "file": "thriple-button.styles.css"
-}

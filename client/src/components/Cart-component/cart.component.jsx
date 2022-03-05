@@ -47,7 +47,7 @@ const Cart = ({ cartItems, cartToggle, price }) => {
 									{el.quantity} X ${el.price}
 								</span>
 							</div>
-							<hr />
+							<hr className='hr' />
 						</>
 					);
 				})}

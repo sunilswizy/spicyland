@@ -12,6 +12,7 @@ import {
 
 import CartButton from "../../components/Cart-button/cart-button.component";
 import CheckoutItem from "../../components/Checkout-item/checkout-item.component";
+import Footer from "../../components/Footer/footer.component";
 
 import { useHistory } from "react-router-dom";
 
@@ -53,57 +54,67 @@ const Checkout = props => {
 	};
 
 	return (
-		<div className='checkout'>
-			<div className='checkout-header'>
-				<h1>
-					Check <span>out</span>
-				</h1>
-			</div>
-			{props.cartItems.length ? (
-				<>
-					<div className='checkout-item-list'>
-						{props.cartItems.map(item => {
-							const price = item.quantity * item.price;
-							return <CheckoutItem key={item.name} price={price} item={item} />;
-						})}
-					</div>
-					<div className='checkout-total'>
-						<h1>Total ${props.total}</h1>
-						<CartButton dialog='true' disabled={loading} onClick={handlePay}>
-							{loading ? (
-								"please wait"
-							) : (
-								<span>
-									<i className='fab fa-amazon-pay' />
-									&nbsp;&nbsp;Now
-								</span>
-							)}
-						</CartButton>
-					</div>
-				</>
-			) : (
-				<div className='empty-con disable-select'>
-					<div className='empty-img-con'>
-						<img
-							src='https://i.ibb.co/TwdCrVS/fast-food-clipart.jpg'
-							alt='food box'
-						/>
-					</div>
-					<div className='empty-img-heading'>
-						<h1>Cart is Empty!</h1>
-						<p>
-							Good Food is always cooking! go ahead and order some yummy items
-							in menu!
-						</p>
-						<div className='empty-btn'>
-							<CartButton dialog='true' onClick={() => history.push("/menu")}>
-								Menu
+		<>
+			<div className='checkout'>
+				<div className='checkout-header'>
+					<h1>
+						Check <span>out</span>
+					</h1>
+				</div>
+				{props.cartItems.length ? (
+					<>
+						<div className='checkout-item-list'>
+							{props.cartItems.map(item => {
+								const price = item.quantity * item.price;
+								return (
+									<CheckoutItem
+										key={item.name}
+										price={price}
+										item={item}
+										isStockAvailable={item?.stock > 1}
+									/>
+								);
+							})}
+						</div>
+						<div className='checkout-total'>
+							<h1>Total ${props.total}</h1>
+							<CartButton dialog='true' disabled={loading} onClick={handlePay}>
+								{loading ? (
+									"please wait"
+								) : (
+									<span>
+										<i className='fab fa-amazon-pay' />
+										&nbsp;&nbsp;Now
+									</span>
+								)}
 							</CartButton>
 						</div>
+					</>
+				) : (
+					<div className='empty-con disable-select'>
+						<div className='empty-img-con'>
+							<img
+								src='https://i.ibb.co/TwdCrVS/fast-food-clipart.jpg'
+								alt='food box'
+							/>
+						</div>
+						<div className='empty-img-heading'>
+							<h1>Cart is Empty!</h1>
+							<p>
+								Good Food is always cooking! go ahead and order some yummy items
+								in menu!
+							</p>
+							<div className='empty-btn'>
+								<CartButton dialog='true' onClick={() => history.push("/menu")}>
+									Menu
+								</CartButton>
+							</div>
+						</div>
 					</div>
-				</div>
-			)}
-		</div>
+				)}
+			</div>
+			<Footer />
+		</>
 	);
 };
 

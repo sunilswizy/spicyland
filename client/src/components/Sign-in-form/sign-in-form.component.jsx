@@ -54,6 +54,7 @@ const SignInForm = () => {
 							name='email'
 							type='text'
 							onChange={handleChange}
+							required
 						/>
 					</div>
 					<div className='sign-in-form-con'>
@@ -63,6 +64,7 @@ const SignInForm = () => {
 							name='password'
 							type='password'
 							onChange={handleChange}
+							required
 						/>
 					</div>
 

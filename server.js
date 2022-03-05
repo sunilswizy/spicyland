@@ -20,7 +20,6 @@ function fullUrl(req) {
 		pathname: req.originalUrl,
 	});
 }
-console.log(fullUrl);
 
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static(path.join(__dirname, "client/build")));
@@ -32,7 +31,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.listen(port, error => {
 	if (error) throw error;
-	console.log(`App is drop on ${port}`);
+	console.log(`land is drop on http://localhost/${port}`);
 });
 
 app.post("/create-checkout-session", async (req, res) => {

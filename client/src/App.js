@@ -1,5 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import "./App.css";
+import "aos/dist/aos.css";
+
 import "@stripe/stripe-js";
 
 import Homepage from "./pages/Homepage/homepage.component";
@@ -12,6 +14,8 @@ import SignUpForm from "./components/Sign-up-form/sign-up-form.component";
 import SignInForm from "./components/Sign-in-form/sign-in-form.component";
 import Checkout from "./pages/Checkout/checkout.component";
 import Footer from "./components/Footer/footer.component";
+import TablePage from "./components/table-page/table-page.component";
+import Chat from "./components/chat/chat.component";
 
 import ErrorBoundary from "./pages/Error-boundary/error-boundary.component";
 
@@ -29,9 +33,10 @@ import { setCurrentUser } from "./redux/user/actions";
 import { selectCurrentUser } from "./redux/user/selector";
 import { createStructuredSelector } from "reselect";
 import Success from "./pages/Success/success.component";
+import Aos from "aos";
 
 const App = ({ currentUser, setCurrentUser }) => {
-	useEffect(() => {
+	useLayoutEffect(() => {
 		let unSubscribe;
 		const checkAuth = async () => {
 			unSubscribe = onAuthStateChanged(auth, async userAuth => {
@@ -49,6 +54,14 @@ const App = ({ currentUser, setCurrentUser }) => {
 		checkAuth();
 
 		return unSubscribe;
+	}, []);
+
+	useEffect(() => {
+		Aos.init({
+			duration: 1000,
+			offset: 250,
+			easing: "ease-in-out-sine",
+		});
 	}, []);
 
 	return (
@@ -74,6 +87,11 @@ const App = ({ currentUser, setCurrentUser }) => {
 						path='/signup'
 						render={() => (currentUser ? <Redirect to='/' /> : <SignUpForm />)}
 					/>
+					<Route
+						exact
+						path='/chat'
+						render={() => (currentUser ? <Chat /> : <SignInForm />)}
+					/>
 					<Route path='/menu/:food' component={SingleItem} />
 					<Route
 						exact
@@ -81,8 +99,13 @@ const App = ({ currentUser, setCurrentUser }) => {
 						render={() => (currentUser ? <Checkout /> : <SignInForm />)}
 					/>
 					<Route exact path='/success' component={Success} />
+					<Route
+						exact
+						path='/dining'
+						render={() => (currentUser ? <TablePage /> : <SignInForm />)}
+					/>
 				</Switch>
-				<Footer />
+				{/* <Footer /> */}
 			</ErrorBoundary>
 		</div>
 	);

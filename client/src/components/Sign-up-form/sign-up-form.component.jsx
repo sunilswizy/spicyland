@@ -60,7 +60,7 @@ const SignUpForm = () => {
 				</span>
 			</div>
 			<div className='col-md-6'>
-				<form onSubmit={handleSubmit}>
+				<form onSubmit={handleSubmit} autoComplete='off'>
 					<div className='sign-up-form-con'>
 						<label className='sign-up-form-label'>Username</label>
 						<InputBox

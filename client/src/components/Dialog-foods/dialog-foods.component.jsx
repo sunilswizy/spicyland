@@ -50,7 +50,14 @@ BootstrapDialogTitle.propTypes = {
 	onClose: PropTypes.func.isRequired,
 };
 
-const DialogFoods = ({ open, handleClose, item, cartItem, handleClick }) => {
+const DialogFoods = ({
+	open,
+	handleClose,
+	item,
+	cartItem,
+	handleClick,
+	isStockAvailable,
+}) => {
 	return (
 		<BootstrapDialog
 			onClose={handleClose}
@@ -67,20 +74,36 @@ const DialogFoods = ({ open, handleClose, item, cartItem, handleClick }) => {
 			</DialogContent>
 			<DialogActions className='dialogActions'>
 				<h1 className='disable-select'>${item.price}</h1>
-				{cartItem ? (
-					<div className='cart-triple-button'>
-						<TripleButton item={item} cartItem={cartItem} />
-					</div>
-				) : (
-					<div className='cart-button'>
-						<CartButton
-							dialog='true'
-							className='disable-select'
-							onClick={handleClick}>
-							ADD
-						</CartButton>
-					</div>
-				)}
+				<>
+					{!isStockAvailable ? (
+						<div className='cart-button'>
+							<CartButton dialog='true' className='disable-select'>
+								OUT OF STOCK
+							</CartButton>
+						</div>
+					) : (
+						<>
+							{cartItem ? (
+								<div className='cart-triple-button'>
+									<TripleButton
+										item={item}
+										cartItem={cartItem}
+										isStockAvailable={isStockAvailable}
+									/>
+								</div>
+							) : (
+								<div className='cart-button'>
+									<CartButton
+										dialog='true'
+										className='disable-select'
+										onClick={handleClick}>
+										ADD
+									</CartButton>
+								</div>
+							)}
+						</>
+					)}
+				</>
 			</DialogActions>
 		</BootstrapDialog>
 	);

@@ -130,6 +130,7 @@ const TripleButton = ({
 	removeItemFromCart,
 	cartItem,
 	inverted,
+	isStockAvailable,
 }) => {
 	const handleAdd = e => {
 		e.stopPropagation();
@@ -153,7 +154,10 @@ const TripleButton = ({
 				onClick={e => e.stopPropagation()}>
 				{cartItem.quantity}
 			</CartButton>
-			<CartButton inverted={inverted} onClick={handleAdd}>
+			<CartButton
+				inverted={inverted}
+				onClick={isStockAvailable ? handleAdd : () => {}}
+				disabled={!isStockAvailable}>
 				+
 			</CartButton>
 		</div>

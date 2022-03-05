@@ -10,8 +10,9 @@ html {
 /* variables */
 
 :root {
-	--green: #1aad1a;
-	--lightgreen: rgba(26, 175, 26, 0.7);
+	--green: #ee536d;
+	/* --green: rgb(66, 194, 245); */
+	--lightgreen: rgba(26, 175, 26, 0.8);
 	--greean: #29a829;
 }
 

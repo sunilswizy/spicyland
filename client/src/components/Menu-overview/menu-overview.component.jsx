@@ -22,7 +22,14 @@ const MenuOverview = ({ title, routeName, items }) => {
 			<div className='menu-overview-items'>
 				{randItems.map(({ ...others }) => {
 					const id = uuid();
-					return <MenuFoods key={id} id={id} {...others} />;
+					return (
+						<div
+							data-aos='zoom-in'
+							data-aos-offset='150'
+							data-aos-duration='600'>
+							<MenuFoods key={id} id={id} {...others} />
+						</div>
+					);
 				})}
 			</div>
 		</div>

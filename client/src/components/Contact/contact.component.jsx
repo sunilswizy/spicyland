@@ -3,8 +3,9 @@ import "./contact.styles.scss";
 
 import InputBox from "../Input-box/input-box.component";
 import ButtonBox from "../Button-box/button-box.component";
+import { sendAQuery } from "../../pages/firebase/firebase.config";
 
-const Contact = () => {
+const Contact = ({ home }) => {
 	const [contact, setContact] = useState({
 		userName: "",
 		email: "",
@@ -24,15 +25,34 @@ const Contact = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
+		alert("response submitted");
+
+		sendAQuery(contact);
+
+		setContact({
+			userName: "",
+			email: "",
+			message: "",
+		});
 	};
 
 	return (
-		<div className='contact'>
-			<h1 className='contact-title'>Contact Us</h1>
+		<div className='contact' style={{ minHeight: home ? "100vh" : "88vh" }}>
+			<h1
+				className='contact-title'
+				data-aos='fade-right'
+				data-aos-offset='250'
+				data-aos-duration='600'>
+				Contact Us
+			</h1>
 
 			<div className='row'>
-				<div className='col-md-6 contact-con'>
-					<form onSubmit={handleSubmit}>
+				<div
+					className='col-md-6 contact-con'
+					data-aos='fade-right'
+					data-aos-offset='250'
+					data-aos-duration='600'>
+					<form onSubmit={handleSubmit} autoComplete='off'>
 						<div className='contact-form-con'>
 							<InputBox
 								type='text'
@@ -41,6 +61,7 @@ const Contact = () => {
 								value={userName}
 								onChange={handleChange}
 								bigBox
+								required
 							/>
 						</div>
 						<div className='contact-form-con'>
@@ -51,6 +72,7 @@ const Contact = () => {
 								value={email}
 								onChange={handleChange}
 								bigBox
+								required
 							/>
 						</div>
 						<div className='contact-form-con'>
@@ -62,6 +84,7 @@ const Contact = () => {
 								value={message}
 								onChange={handleChange}
 								maxLength='500'
+								required
 							/>
 						</div>
 						<div className='contact-btn'>
@@ -70,7 +93,11 @@ const Contact = () => {
 					</form>
 				</div>
 
-				<div className='col-md-6'>
+				<div
+					className='col-md-6'
+					data-aos='fade-left'
+					data-aos-offset='250'
+					data-aos-duration='600'>
 					<div className='container row contact-con'>
 						<div className='col-md-1' />
 						<div className='col-md-1 contact-icon'>
@@ -94,7 +121,7 @@ const Contact = () => {
 
 						<div className='col-md-8 contact-content'>
 							<h1 className='contact-title'>Call Order Now!</h1>
-							<span className='contact-subtitle'> +1-533-3144-233</span>
+							<span className='contact-subtitle'> +91-533-3144-233</span>
 						</div>
 					</div>
 
@@ -118,7 +145,7 @@ const Contact = () => {
 
 						<div className='col-md-8 contact-content'>
 							<h1 className='contact-title'>Mailing Address!</h1>
-							<span className='contact-subtitle'> spicyland@outlook.com</span>
+							<span className='contact-subtitle'> spicyland@gamil.com</span>
 						</div>
 					</div>
 				</div>

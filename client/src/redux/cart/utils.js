@@ -6,6 +6,7 @@ export const addingItemToaCart = (cart, newItem) => {
 				return {
 					...item,
 					quantity: item.quantity + 1,
+					stock: item.stock - 1,
 				};
 			}
 			return item;
@@ -24,7 +25,7 @@ export const removingItemFromaCart = (cart, removeItem) => {
 
 	return cart.map(item => {
 		if (item.name === removeItem.name) {
-			return { ...item, quantity: item.quantity - 1 };
+			return { ...item, quantity: item.quantity - 1, stock: item.stock + 1 };
 		}
 		return item;
 	});

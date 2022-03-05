@@ -41,10 +41,10 @@ const blue = {
 };
 
 const CustomButtonRoot = styled(ButtonRoot)(
-	({ theme, dialog }) => `
+	({ theme, dialog, reserved }) => `
     overflow: visible;
     cursor: pointer;
-    --main-color: ${theme.palette.mode === "light" ? blue[600] : blue[100]};
+    --main-color: ${reserved ? "red" : blue[600]} ;
     --hover-color: ${theme.palette.mode === "light" ? blue[50] : blue[900]};
     --active-color: ${theme.palette.mode === "light" ? blue[100] : blue[800]};
   
@@ -58,7 +58,7 @@ const CustomButtonRoot = styled(ButtonRoot)(
       stroke: var(--main-color);
       stroke-width: 1;
       filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.1));
-      fill: ${dialog ? "#119811" : "transparent"};
+      fill: ${reserved ? "red" : dialog ? "#119811" : "transparent"};
     }
   
     & .borderEffect {
@@ -76,7 +76,7 @@ const CustomButtonRoot = styled(ButtonRoot)(
       }
   
       .bg {
-        fill: #119811;
+        fill: ${reserved ? "red" : "#119811"};
       }
     }
   

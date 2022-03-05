@@ -6,12 +6,33 @@ import ButtonBox from "../Button-box/button-box.component";
 const StartPage = () => {
 	return (
 		<div
-			className='start-page'
-			// style={{
-			// 	backgroundImage: `url(https://i.ibb.co/XskhwSx/photo-2022-01-16-17-27-24.jpg)`,
-			// }}
-		>
-			<div className='start-page-details'>
+			className='start-page disable-select'
+			style={{
+				backgroundImage: `url(https://i.ibb.co/PDLB4jf/istockphoto-1179449390-612x612.jpg)`,
+			}}>
+			<div className='transparent' />
+			<div className='transparent-contenet' />
+			<div
+				className='start-page-details'
+				data-aos='zoom-in'
+				data-aos-offset='250'
+				data-aos-duration='600'>
+				<p className='start-page-subheading'>Welcome to land of spicy.</p>
+
+				<h1 className='start-page-heading'>SpicylanD!</h1>
+				<div className='start-page-btn-con'>
+					<button>COME ON IN, WE'RE OPEN</button>
+					{/* <ButtonBox>RESERVE TABLE</ButtonBox> */}
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default StartPage;
+
+{
+	/* <div className='start-page-details'>
 				<h1 className='start-page-heading'>SpicyLand!</h1>
 				<p className='start-page-subheading'>A Land of Spicy Items!</p>
 				<div className='start-page-btn-con'>
@@ -82,56 +103,5 @@ const StartPage = () => {
 						aria-hidden='true'></span>
 					<span className='visually-hidden'>Next</span>
 				</button>
-			</div>
-		</div>
-	);
-};
-
-export default StartPage;
-
-{
-	/* <div
-id='carouselControls'
-classNameName='carousel slide'
-data-bs-ride='carousel'>
-<div className='carousel-inner'>
-	<div classNameName='startpage-img-con carousel-item active'>
-		<img
-			src='https://i.ibb.co/XskhwSx/photo-2022-01-16-17-27-24.jpg'
-			alt=''
-			classNameName='startpage-img d-block w-100'
-		/>
-	</div>
-	<div classNameName='startpage-img-con carousel-item'>
-		<img
-			src='https://i.ibb.co/hXv9zWm/ice-cream.jpg'
-			alt=''
-			classNameName='startpage-img d-block w-100'
-		/>
-	</div>
-	<div classNameName='startpage-img-con carousel-item'>
-		<img
-			src='https://i.ibb.co/5hKzXwv/juice.jpg'
-			alt=''
-			classNameName='startpage-img d-block w-100'
-		/>
-	</div>
-</div>
-<button
-	className='carousel-control-prev'
-	type='button'
-	data-bs-target='#carouselControls'
-	data-bs-slide='prev'>
-	<span className='carousel-control-prev-icon' aria-hidden='true'></span>
-	<span className='visually-hidden'>Previous</span>
-</button>
-<button
-	className='carousel-control-next'
-	type='button'
-	data-bs-target='#carouselControls'
-	data-bs-slide='next'>
-	<span className='carousel-control-next-icon' aria-hidden='true'></span>
-	<span className='visually-hidden'>Next</span>
-</button> 
-</div> */
+			</div> */
 }
