@@ -7,7 +7,7 @@ const StripeButton = ({ price, handleClick, reservedTime, guests }) => {
 		"pk_test_51JZ3dlSGqpX5B65eSEpcncrRfo7nz9Qb6EaWHix0sU77cfce6DXWS7kNq17TYsMQUH5ec0DeGxrl3rvCQDWlqbnZ00pMNLc73P";
 
 	const onToken = token => {
-		fetch("http://localhost:5000/send-mail", {
+		fetch("https://spicyland.herokuapp.com/send-mail", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
