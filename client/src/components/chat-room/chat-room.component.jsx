@@ -3,7 +3,6 @@ import "./chat-room.styles.scss";
 import { store } from "../../pages/firebase/firebase.config";
 import {
 	collection,
-	limit,
 	onSnapshot,
 	orderBy,
 	query,
@@ -19,7 +18,7 @@ const ChatRoom = () => {
 	const scroll = useRef(null);
 
 	const [messages, setMessages] = useState([]);
-	const [message, setMessage] = useState();
+	const [message, setMessage] = useState("");
 	const messageRef = collection(store, "messages");
 	const data = query(messageRef, orderBy("createdAt"));
 
@@ -66,7 +65,9 @@ const ChatRoom = () => {
 					className='input'
 					placeholder='Type something about foods...'
 				/>
-				<button className='button'>SEND</button>
+				<button className='button' disabled={!message.length}>
+					SEND
+				</button>
 			</form>
 		</div>
 	);

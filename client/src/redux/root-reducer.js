@@ -12,7 +12,7 @@ import storage from "redux-persist/lib/storage";
 const persistConfig = {
 	key: "spicyworld",
 	storage,
-	whitelist: ["cart"],
+	whitelist: ["cart", "table"],
 };
 
 const rootReducer = combineReducers({

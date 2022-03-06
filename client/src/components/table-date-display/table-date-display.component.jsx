@@ -10,31 +10,20 @@ const TableDateDisplay = ({
 	lunch,
 	dinner,
 }) => {
+	const sty = {
+		backgroundColor: isActive ? "#444" : "#ee536d",
+		border: isActive ? "2px solid #ee536d" : "2px solid #444",
+	};
 	return (
-		<div
-			className='table-page-con'
-			style={{ backgroundColor: isActive ? "white" : "blue" }}
-			onClick={() => handleClick(id)}>
+		<div className='table-date-con'>
+			<div
+				className='table-page-con'
+				style={sty}
+				onClick={() => handleClick(id)}>
+				<h1>{day}</h1>
+			</div>
 			<p>{dayInWeek}</p>
-			<h1>{day}</h1>
 		</div>
-
-		// {/* <h1>Lunch</h1>
-		// <div>
-		// 	{lunch.map(el => (
-		// 		<Button cart={true} dialog={true}>
-		// 			{el.time}
-		// 		</Button>
-		// 	))}
-		// </div>
-		// <h1>Dinner</h1>
-		// <div>
-		// 	{dinner.map(el => (
-		// 		<Button cart={true} dialog={true} reserved={true}>
-		// 			{el.time}
-		// 		</Button>
-		// 	))}
-		// </div> */}
 	);
 };
 

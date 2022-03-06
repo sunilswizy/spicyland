@@ -20,30 +20,44 @@ import Select from "@mui/material/Select";
 const TablePage = ({ daysList }) => {
 	const [currentDayItem, setCurrentDayItem] = useState(0);
 
-	const [guests, setGuests] = useState("2 Guests");
+	const [guests, setGuests] = useState(2);
 	const currentDate = `${daysList[currentDayItem].dayInWeek}
 	${daysList[currentDayItem].month} ${daysList[currentDayItem].day}`;
 
 	const handleChange = event => {
 		setGuests(event.target.value);
 	};
-	return (
-		<div>
-			<h1>TablePage</h1>
-			<h2>{currentDate}</h2>
 
-			<FormControl variant='filled' sx={{ m: 1, minWidth: 120 }}>
-				<InputLabel id='select-filled-label'>Guests</InputLabel>
-				<Select
-					labelId='select-filled-label'
-					id='simple-select-filled'
-					value={guests}
-					onChange={handleChange}>
-					<MenuItem value='2 Guests'>2 Guests</MenuItem>
-					<MenuItem value='3 Guests'>3 Guests</MenuItem>
-					<MenuItem value='4 Guests'>4 Guests</MenuItem>
-				</Select>
-			</FormControl>
+	return (
+		<div className='table-page-container'>
+			<div className='table-heading'>
+				<h1>
+					Reserve <span>Dinning! </span>
+				</h1>
+			</div>
+
+			<div className='table-page-items'>
+				<h2>{currentDate}</h2>
+				<div className='table-page-select'>
+					<FormControl variant='filled' sx={{ m: 1, minWidth: 120 }}>
+						<InputLabel id='select-filled-label'>Guests</InputLabel>
+						<Select
+							labelId='select-filled-label'
+							id='simple-select-filled'
+							value={guests}
+							onChange={handleChange}>
+							<MenuItem value={2}>2 Guests</MenuItem>
+							<MenuItem value={3}>3 Guests</MenuItem>
+							<MenuItem value={4}>4 Guests</MenuItem>
+						</Select>
+					</FormControl>
+				</div>
+			</div>
+
+			<div className='table-page-hr'>
+				<hr />
+			</div>
+
 			<div className='tables-container'>
 				{daysList.map(el => (
 					<TableDateDisplay
@@ -55,31 +69,41 @@ const TablePage = ({ daysList }) => {
 				))}
 			</div>
 
-			<h1>Lunch</h1>
-			<div>
-				{daysList[currentDayItem].timing.map(el =>
-					el.type === "lunch" ? (
-						<TableChild
-							{...el}
-							currentDayItem={currentDayItem}
-							guests={guests}
-							currentDate={currentDate}
-						/>
-					) : null
-				)}
+			<div className='table-page-hr'>
+				<hr />
 			</div>
-			<h1>Dinner</h1>
-			<div>
-				{daysList[currentDayItem].timing.map(el =>
-					el.type === "dinner" ? (
-						<TableChild
-							{...el}
-							currentDayItem={currentDayItem}
-							guests={guests}
-							currentDate={currentDate}
-						/>
-					) : null
-				)}
+
+			<div className='table-page-lunch'>
+				<h1>Lunch</h1>
+				<div className='table-page-btn-child'>
+					{daysList[currentDayItem].timing.map(el =>
+						el.type === "lunch" ? (
+							<TableChild
+								{...el}
+								currentDayItem={currentDayItem}
+								guests={guests}
+								currentDate={currentDate}
+								key={el.table_id}
+							/>
+						) : null
+					)}
+				</div>
+			</div>
+			<div className='table-page-lunch'>
+				<h1>Dinner</h1>
+				<div className='table-page-btn-child'>
+					{daysList[currentDayItem].timing.map(el =>
+						el.type === "dinner" ? (
+							<TableChild
+								{...el}
+								currentDayItem={currentDayItem}
+								guests={guests}
+								currentDate={currentDate}
+								key={el.table_id}
+							/>
+						) : null
+					)}
+				</div>
 			</div>
 		</div>
 	);

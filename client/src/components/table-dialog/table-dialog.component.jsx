@@ -8,7 +8,8 @@ import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
-import { Button } from "@mui/material";
+import StripeButton from "../stripe-btn/stripe-btn.component";
+import "./table-dialog.styles.scss";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 	"& .MuiDialogContent-root": {
@@ -60,6 +61,9 @@ const DialogTable = ({
 		handleReserve();
 	};
 
+	const price = guests * 150;
+	const reservedTime = `${currentDate} - ${time}`;
+
 	return (
 		<BootstrapDialog
 			onClose={handleClose}
@@ -69,48 +73,68 @@ const DialogTable = ({
 				id='customized-dialog-title'
 				className='disable-select'
 				onClose={handleClose}>
-				<i className='fa fa-utensils' />
-				SpicylanD!
+				<span className='dialog-heading'>
+					<i style={{ color: "#ee536d" }} className='fa fa-utensils' />{" "}
+					SpicylanD!
+				</span>
 			</BootstrapDialogTitle>
 			<DialogContent dividers className='dialogBox'>
-				<h1>Complete Your Reservation</h1>
-				<div>
-					<i className='fa fa-address-book'> Address</i>
-					<p>
-						22/23, Venkatanarayana Road, T Nagar, Chennai T Nagar T Nagar,
-						Chennai 600017
-					</p>
-				</div>
-				<div>
-					<i className='fa fa-calendar'> Time</i>
-					<p>
-						{currentDate} - {time}
-					</p>
-				</div>
-				<div>
-					<i className='fa fa-users'> Party</i>
-					<p>{guests}</p>
-				</div>
-				<div>
-					<i className='fa fa-book'> Menu</i>
-					<p> Juices, Biriyani, Pizza</p>
-				</div>
-				<div>
-					<i className='fa fa-ban'> Cancellation Policy</i>
-					<p>
-						While you won't be charged if you need to cancel, we ask that you do
-						so at least 24 hours in advance.
-					</p>
-				</div>
-				<div>
-					<i className='fa fa-utensils'> SpicylanD!</i>
-					<p>SpicylanD, a land of spicy items!</p>
+				<div className='dialog-con-table'>
+					<h1>Complete Your Reservation!</h1>
+					<div className='dialog-con-table-child'>
+						<i className='fa fa-address-book' />
+						<span>Address</span>
+						<p>22/23, Kovaiputhur Road, Coimbatore, Coimbatore - 600017</p>
+					</div>
+
+					<div className='dialog-con-table-child'>
+						<i className='fa fa-calendar' />
+						<span>Time</span>
+
+						<p>{reservedTime}</p>
+					</div>
+
+					<div className='dialog-con-table-child'>
+						<i className='fas fa-birthday-cake'></i>
+						<span>Party</span>
+						<p>{guests} Guests</p>
+					</div>
+
+					<div className='dialog-con-table-child'>
+						<i className='fas fa-dollar-sign' />
+						<span>Price</span>
+						<p>$ {price}</p>
+					</div>
+
+					<div className='dialog-con-table-child'>
+						<i className='fa fa-book' />
+						<span>Menu</span>
+						<p> Juices, Biriyani, Pizza</p>
+					</div>
+
+					<div className='dialog-con-table-child'>
+						<i className='fas fa-eject'></i>
+						<span>Cancellation Policy</span>
+						<p>
+							While you won't be charged if you need to cancel, we ask that you
+							do so at least 24 hours in advance.
+						</p>
+					</div>
+
+					<div className='dialog-con-table-child'>
+						<i className='fa fa-utensils' />
+						<span>SpicylanD!</span>
+						<p>Spicyland, a land of spicy items!</p>
+					</div>
 				</div>
 			</DialogContent>
 			<DialogActions className='dialogActions'>
-				<Button variant='error' onClick={handleToggle}>
-					RESERVE NOW
-				</Button>
+				<StripeButton
+					price={price}
+					reservedTime={reservedTime}
+					guests={guests}
+					handleClick={handleToggle}
+				/>
 			</DialogActions>
 		</BootstrapDialog>
 	);

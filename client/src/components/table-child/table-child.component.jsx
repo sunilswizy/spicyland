@@ -24,18 +24,16 @@ const TableChild = ({
 
 	return (
 		<>
-			<div>
-				<button
-					disabled={reserved}
-					style={{ backgroundColor: reserved ? "red" : "blue" }}
-					className='table-btn'
-					onClick={() => setOpen(true)}
-					key={table_id}>
-					{time}
-					<br />
-					{reserved ? "Reserved" : "Dinning Room"}
-				</button>
-			</div>
+			<button
+				disabled={reserved}
+				style={{ backgroundColor: reserved ? "#e92727" : "#222" }}
+				className='table-btn'
+				onClick={() => setOpen(true)}
+				key={table_id}>
+				{time}
+				<br />
+				<span>{reserved ? "Reserved" : "Dinning Room"}</span>
+			</button>
 			<DialogTable
 				open={open}
 				handleClose={handleClose}

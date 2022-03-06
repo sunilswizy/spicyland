@@ -145,7 +145,7 @@ const Contact = ({ home }) => {
 
 						<div className='col-md-8 contact-content'>
 							<h1 className='contact-title'>Mailing Address!</h1>
-							<span className='contact-subtitle'> spicyland@gamil.com</span>
+							<span className='contact-subtitle'> spicyland1912@gamil.com</span>
 						</div>
 					</div>
 				</div>

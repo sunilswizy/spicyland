@@ -66,6 +66,9 @@
 			cursor: pointer;
 			font-size: 1.25rem;
 			border-bottom-right-radius: 12px;
+			&:disabled {
+				opacity: 0.8;
+			}
 		}
 	}
 }

@@ -219,8 +219,8 @@ const MENU_ITEMS = [
 	},
 	{
 		id: 3,
-		title: "Noodels",
-		routeName: "noodels",
+		title: "Noodles",
+		routeName: "Noodles",
 		items: [
 			{
 				id: 18,

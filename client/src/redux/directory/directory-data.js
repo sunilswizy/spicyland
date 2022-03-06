@@ -7,7 +7,7 @@ const directory_data = [
 		dataAos: "zoom-in-right",
 	},
 	{
-		title: "noodels",
+		title: "Noodles",
 		imageUrl: "https://i.ibb.co/nmszds5/noodles.jpg",
 		id: 2,
 		linkUrl: "menu/noodels",

@@ -7,7 +7,7 @@ export const getDayList = () => {
 
 	for (let i = 0; i <= 7; i++) {
 		let nextDay = new Date(currentDay);
-		nextDay.setDate(currentDay.getDate() + i);
+		nextDay.setDate(currentDay.getDate() + i + 1);
 		let dayInWeek = weekDay[nextDay.getDay()];
 		let month = nextDay.toString().slice(3, 7);
 		let day = nextDay.toString().slice(7, 10);

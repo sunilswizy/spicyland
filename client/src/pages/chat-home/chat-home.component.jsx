@@ -12,8 +12,8 @@ const ChatHome = () => {
 					<h2>SpicylanD!</h2>
 					<h1>ChatrooM</h1>
 					<p>
-						Anyone can chat with the other user of
-						<br /> SpicylanD to get feedback
+						join in the official chatroom of
+						<br /> SpicylanD to get feedback.
 					</p>
 					<button onClick={() => history.push("/chat")}>CHAT NOW!</button>
 				</div>
