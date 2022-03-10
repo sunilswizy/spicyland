@@ -219,8 +219,8 @@ const MENU_ITEMS = [
 	},
 	{
 		id: 3,
-		title: "Noodles",
-		routeName: "Noodles",
+		title: "noodles",
+		routeName: "noodles",
 		items: [
 			{
 				id: 18,
@@ -273,21 +273,21 @@ const MENU_ITEMS = [
 			},
 			{
 				id: 25,
-				name: "Tripple  noodles",
+				name: "chinese  noodles",
 				imageUrl: "https://i.ibb.co/cvpJXMF/image-downloader-1643205896388.jpg",
 				price: 90,
 				stock: 13,
 			},
 			{
 				id: 27,
-				name: "Tripple  noodles",
+				name: "Sehezwaan  noodles",
 				imageUrl: "https://i.ibb.co/2Zb0rdz/image-downloader-1643205919742.jpg",
 				price: 165,
 				stock: 13,
 			},
 			{
 				id: 28,
-				name: "Tripple  noodles",
+				name: "mushroom  noodles",
 				imageUrl: "https://i.ibb.co/SJtjmxt/image-downloader-1643205702033.jpg",
 				price: 185,
 				stock: 13,

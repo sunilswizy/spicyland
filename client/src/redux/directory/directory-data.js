@@ -7,10 +7,10 @@ const directory_data = [
 		dataAos: "zoom-in-right",
 	},
 	{
-		title: "Noodles",
+		title: "noodles",
 		imageUrl: "https://i.ibb.co/nmszds5/noodles.jpg",
 		id: 2,
-		linkUrl: "menu/noodels",
+		linkUrl: "menu/noodles",
 		dataAos: "zoom-in",
 	},
 	{
