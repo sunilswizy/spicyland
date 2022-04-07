@@ -1,5 +1,5 @@
 import { getDayList, updateTable } from "./utils";
-import { TABLE_BOOKED } from "./types";
+import { TABLE_BOOKED, REFRESH_TABLE } from "./types";
 
 const initialState = {
 	dayList: getDayList(),
@@ -16,6 +16,13 @@ const tableReducer = (state = initialState, action) => {
 					action.payload.table_id
 				),
 			};
+
+		case REFRESH_TABLE:
+			return {
+				...state,
+				dayList: getDayList(),
+			};
+
 		default:
 			return state;
 	}

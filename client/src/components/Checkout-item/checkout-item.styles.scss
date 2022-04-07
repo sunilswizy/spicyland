@@ -71,6 +71,31 @@
 				color: var(--green);
 			}
 		}
+
+		@media (max-width: 576px) {
+			width: 95%;
+		.checkout-item-img {
+			width: 20%;
+			height: 80%;
+		}
+		.checkout-item-name {
+			width: 25%;
+			font-size: 1.5rem;
+		}
+		.checkout-item-price {
+			width: 10%;
+			font-size: 1.5rem;
+
+		}
+		.checkout-item-delete {
+			width: 10%;
+			font-size: 1.9rem;
+
+		}
+		.checkout-item-button {
+			width: 45%;
+		}
+	}
 	}
 }
 .checkout-total {

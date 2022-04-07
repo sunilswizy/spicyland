@@ -1,4 +1,4 @@
-import { TABLE_BOOKED } from "./types";
+import { TABLE_BOOKED, REFRESH_TABLE } from "./types";
 
 export const updateTableList = (id, table_id) => ({
 	type: TABLE_BOOKED,
@@ -6,4 +6,8 @@ export const updateTableList = (id, table_id) => ({
 		id,
 		table_id,
 	},
+});
+
+export const refreshTable = () => ({
+	type: REFRESH_TABLE,
 });

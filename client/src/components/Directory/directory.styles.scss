@@ -5,6 +5,11 @@
 		width: 100%;
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
+		gap: 10px;
+
+		@media (max-width: 576px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 	.directory-heading {
 		text-align: center;

@@ -10,14 +10,14 @@ import ContactFrom from "../../components/Contact/contact.component";
 
 const Homepage = () => {
 	return (
-		<>
+		<div className='homepage'>
 			<StartPage />
 			<TableHome />
 			<Directory />
 			<ChatHome />
 			<ContactFrom home />
 			<Footer />
-		</>
+		</div>
 	);
 };
 

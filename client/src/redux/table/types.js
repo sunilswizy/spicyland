@@ -1,1 +1,2 @@
 export const TABLE_BOOKED = "TABLE_BOOKED";
+export const REFRESH_TABLE = "REFRESH_TABLE";

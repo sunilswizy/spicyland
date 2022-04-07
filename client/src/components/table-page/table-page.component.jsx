@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./table-page.styles.scss";
 
 import TableDateDisplay from "../table-date-display/table-date-display.component";
 
 import { connect } from "react-redux";
+import { refreshTable } from "../../redux/table/actions";
 import { createStructuredSelector } from "reselect";
 import { selectDayList } from "../../redux/table/selector";
 import TableChild from "../table-child/table-child.component";
@@ -13,11 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-// "https://i.ibb.co/1QKhfrh/table.jpg"
-// https://www.opentable.com/r/the-druid-garden-bangalore?originId=9c950057-11d6-4733-b710-37cef7527911&corrid=9c950057-11d6-4733-b710-37cef7527911&avt=eyJ2IjoyLCJtIjoxLCJwIjowLCJzIjowLCJuIjowfQ
-// https://resy.com/cities/chn/barracks?date=2022-03-04&seats=2
-
-const TablePage = ({ daysList }) => {
+const TablePage = ({ daysList, refreshTable }) => {
 	const [currentDayItem, setCurrentDayItem] = useState(0);
 
 	const [guests, setGuests] = useState(2);
@@ -27,6 +24,24 @@ const TablePage = ({ daysList }) => {
 	const handleChange = event => {
 		setGuests(event.target.value);
 	};
+
+	useEffect(() => {
+		const weekDay = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+		const currentDay = new Date();
+		let nextDay = new Date(currentDay);
+		nextDay.setDate(currentDay.getDate() + 1);
+		let dayInWeek = weekDay[nextDay.getDay()];
+		let month = nextDay.toString().slice(3, 7);
+		let day = nextDay.toString().slice(7, 10);
+
+		if (
+			daysList[0].dayInWeek !== dayInWeek ||
+			daysList[0].month !== month ||
+			daysList[0].day !== day
+		) {
+			refreshTable();
+		}
+	}, []);
 
 	return (
 		<div className='table-page-container'>
@@ -113,4 +128,8 @@ const mapStateToProps = createStructuredSelector({
 	daysList: selectDayList,
 });
 
-export default connect(mapStateToProps)(TablePage);
+const mapDispatchToProps = dispatch => ({
+	refreshTable: () => dispatch(refreshTable()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TablePage);

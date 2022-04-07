@@ -9,6 +9,9 @@
 	border-right: none;
 	background-color: white;
 	letter-spacing: 0.1rem;
+	@media (max-width: 576px) {
+		width: 60%;
+	}
 }
 .search-input-box::-webkit-input-placeholder {
 	color: #777;

@@ -78,3 +78,19 @@
 		display: none;
 	}
 }
+
+@media (max-width: 576px) {
+	.cart-icon {
+		justify-content: flex-start;
+	}
+	.icon {
+		width: 50px !important;
+	}
+	.cart-container {
+		width: 7% !important;
+		justify-content: center !important;
+	}
+	.empty-cart {
+		display: none;
+	}
+}

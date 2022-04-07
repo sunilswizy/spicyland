@@ -20,7 +20,7 @@ const TableHome = () => {
 				data-aos='zoom-in-left'
 				data-aos-offset='400'
 				data-aos-duration='1000'>
-				<div>
+				<div className='table-res'>
 					<h2>SpicylanD!</h2>
 					<h1>Dinning!</h1>
 					<p>

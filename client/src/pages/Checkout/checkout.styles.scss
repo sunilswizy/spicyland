@@ -63,6 +63,16 @@
 			display: flex;
 			justify-content: center;
 		}
+		
+	@media (max-width: 576px) {
+		h1{
+			text-align: center;
+		}
+		p{
+			text-align: center;
+			padding: 0 0.5rem;
+		}
+	}
 		.empty-logo {
 			width: 100%;
 			display: flex;
@@ -80,6 +90,13 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
+
+			
+			@media (max-width: 576px) {
+				// position: absolute;
+				height: 10vh;
+				align-items: flex-end;
+			}
 		}
 	}
 }

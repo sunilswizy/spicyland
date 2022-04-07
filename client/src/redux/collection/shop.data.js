@@ -304,6 +304,7 @@ const MENU_ITEMS = [
 				name: "Green Pistha",
 				imageUrl: "https://i.ibb.co/MBRFsXR/image-downloader-1643203530085.jpg",
 				price: 25,
+				priceUrl: "price_1KltC5SAvfC2s2Za2izEaMou",
 				stock: 13,
 			},
 			{
@@ -312,13 +313,15 @@ const MENU_ITEMS = [
 				imageUrl:
 					"https://i.ibb.co/fn4CmcL/rajwari-or-rajwadi-sweet-kesar-badam-pista-kulfi-or-ice-cream-candy.jpg",
 				price: 20,
+				priceUrl: "price_1KltHASAvfC2s2ZaW2hWS9h6",
 				stock: 13,
 			},
 			{
 				id: 25,
-				name: "Venilla stick",
+				name: "Vanilla stick",
 				imageUrl: "https://i.ibb.co/6shjL2s/image-downloader-1643203678064.jpg",
 				price: 80,
+				priceUrl: "price_1KltJWSAvfC2s2ZadvyH0En9",
 				stock: 13,
 			},
 			{
@@ -326,7 +329,8 @@ const MENU_ITEMS = [
 				name: "Milk chocolate chip",
 				imageUrl: "https://i.ibb.co/JdrXsCj/image-downloader-1643203654840.jpg",
 				price: 80,
-				stock: 13,
+				priceUrl: "price_1KltMNSAvfC2s2ZawdtOmZsT",
+				stock: 10,
 			},
 			{
 				id: 27,
@@ -334,6 +338,7 @@ const MENU_ITEMS = [
 				imageUrl:
 					"https://i.ibb.co/fv1n27W/Homemade-yogurt-ice-cream-with-cherry-mint-leaves-in-bowl-with-spoon-on-wooden-table-top-view.jpg",
 				price: 45,
+				priceUrl: "",
 				stock: 13,
 			},
 			{
