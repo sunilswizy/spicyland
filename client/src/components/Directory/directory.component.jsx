@@ -18,10 +18,11 @@ const Directory = ({ data }) => {
 				{data.map(({ id, dataAos, ...otherProps }) => {
 					return (
 						<div
+							key={id}
 							data-aos={dataAos}
 							data-aos-offset='100'
 							data-aos-duration='600'>
-							<MenuItem key={id} {...otherProps} />;
+							<MenuItem {...otherProps} />;
 						</div>
 					);
 				})}

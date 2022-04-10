@@ -36,8 +36,8 @@ const Cart = ({ cartItems, cartToggle, price }) => {
 			<div className='cart-list'>
 				{cartItems.map(el => {
 					return (
-						<>
-							<div className='cart-list-child' key={el.id}>
+						<React.Fragment key={el.id}>
+							<div className='cart-list-child'>
 								<div
 									style={{ backgroundImage: `url(${el.imageUrl})` }}
 									className='cart-list-image'
@@ -48,7 +48,7 @@ const Cart = ({ cartItems, cartToggle, price }) => {
 								</span>
 							</div>
 							<hr className='hr' />
-						</>
+						</React.Fragment>
 					);
 				})}
 			</div>
