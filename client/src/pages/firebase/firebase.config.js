@@ -8,6 +8,9 @@ import {
 	collection,
 	addDoc,
 	serverTimestamp,
+	writeBatch,
+	query,
+	getDocs,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -65,4 +68,38 @@ export const sendAMessage = async message => {
 export const sendAQuery = async query => {
 	const queryRef = collection(store, "query");
 	await addDoc(queryRef, query);
+};
+
+export const addProductsToStore = async (collectionId, objectToAdd) => {
+	const collectionRef = collection(store, collectionId);
+
+	const batch = writeBatch(store);
+
+	objectToAdd.forEach(({ routeName, title, items }) => {
+		const docRef = doc(collectionRef, title);
+		batch.set(docRef, {
+			title,
+			items,
+			routeName,
+		});
+	});
+
+	await batch.commit();
+
+	console.log("Updated!");
+};
+
+export const getProductsFromStore = async collectionId => {
+	const collectionRef = collection(store, collectionId);
+
+	const queryRef = query(collectionRef);
+	const data = await getDocs(queryRef);
+
+	const res = data.docs.map(item => item.data());
+
+	return res.reduce((acc, item) => {
+		const { title } = item;
+		acc[title.toLowerCase()] = item;
+		return acc;
+	}, {});
 };

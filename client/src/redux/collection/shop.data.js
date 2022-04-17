@@ -621,17 +621,8 @@ const MENU_ITEMS = [
 				priceUrl: "price_1Kn21VSAvfC2s2ZacTyHneYG",
 				stock: 13,
 			},
-			// {
-			// 	id: 74,
-			// 	name: "Pizza grandiosa",
-			// 	imageUrl: "https://i.ibb.co/4FCNZ2w/image-downloader-1649567425491.jpg",
-			// 	price: 150,
-			// 	priceUrl: "price_1KmhR1SAvfC2s2ZasgSvw1LK",
-			// 	stock: 13,
-			// },
-
 			{
-				id: 75,
+				id: 74,
 				name: "Choco cupcake",
 				imageUrl: "https://i.ibb.co/4WHpDPB/image-downloader-1649567764435.jpg",
 				price: 150,
@@ -639,7 +630,7 @@ const MENU_ITEMS = [
 				stock: 13,
 			},
 			{
-				id: 76,
+				id: 75,
 				name: "Brownie cupcake",
 				imageUrl: "https://i.ibb.co/CzMjPk5/image-downloader-1649567838134.jpg",
 				price: 150,
@@ -647,7 +638,7 @@ const MENU_ITEMS = [
 				stock: 13,
 			},
 			{
-				id: 77,
+				id: 76,
 				name: "Cupcakes",
 				imageUrl:
 					"https://i.ibb.co/2qLw61z/image-downloader-1649567931006-jpg.webp",

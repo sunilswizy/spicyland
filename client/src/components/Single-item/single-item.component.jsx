@@ -1,38 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./single-item.styles.scss";
 
 import { useParams } from "react-router-dom";
 import MenuFoods from "../Menu-foods/menu-foods.component";
-import { v4 as uuid } from "uuid";
 
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { selectCollection } from "../../redux/collection/selector";
+import { useSelector } from "react-redux";
+import {
+	selectCollection,
+	selectLoading,
+} from "../../redux/collection/selector";
+import ColorSpinner from "../color-spinner/color-spinner.component";
 
-const SingleItem = ({ collection }) => {
+const SingleItem = () => {
+	const collection = useSelector(selectCollection);
+	const loading = useSelector(selectLoading);
+
 	const { food } = useParams();
+	const [sigleCollection, setSingleCollection] = useState({});
 
-	const data = collection.find(el => {
-		return el.title.toLowerCase() === food.toLowerCase();
-	});
+	useEffect(() => {
+		setSingleCollection(collection[food.toLowerCase()]);
+	}, [collection, food]);
 
 	return (
 		<div className='single-item'>
 			<div className='single-item-headings'>
-				<h1>{data.title}</h1>
+				<h1>{food}</h1>
 			</div>
-			<div className='single-item-items'>
-				{data.items.map(({ ...others }) => {
-					const id = uuid();
-					return <MenuFoods key={id} id={id} {...others} />;
-				})}
-			</div>
+
+			{loading ? (
+				<ColorSpinner />
+			) : (
+				<div className='single-item-items'>
+					{setSingleCollection ? (
+						sigleCollection?.items?.map(({ id, ...others }) => {
+							return <MenuFoods key={id} id={id} {...others} />;
+						})
+					) : (
+						<ColorSpinner />
+					)}
+				</div>
+			)}
 		</div>
 	);
 };
 
-const mapStateToProps = createStructuredSelector({
-	collection: selectCollection,
-});
-
-export default connect(mapStateToProps)(SingleItem);
+export default SingleItem;
