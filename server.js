@@ -43,6 +43,7 @@ app.post("/send-mail", (req, res) => {
 	const price = req.body.price;
 	const guests = req.body.guests;
 	const reservedTime = req.body.reservedTime;
+	console.log("fads");
 
 	console.log(id, email, brand, price, guests, reservedTime);
 
