@@ -1,0 +1,106 @@
+// Header
+.header {
+	width: 100%;
+	font-size: 2.5rem;
+	color: #666;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
+	.bar {
+		color: #333;
+	}
+	.logo {
+		width: 30%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: bolder;
+		color: #666;
+		letter-spacing: 0.1em;
+		margin: 1rem 0;
+		i {
+			padding-right: 0.8rem;
+			color: var(--green);
+		}
+		:visited {
+			color: #222;
+		}
+		:hover {
+			color: var(--green);
+			animation: trans 2s ease-in-out infinite;
+		}
+		.logo-name {
+			font-size: 2.5rem;
+		}
+	}
+
+	.navbar-collapse {
+		flex-grow: 0;
+	}
+
+	.navbar-head {
+		.links {
+			font-size: 1.7rem;
+			margin-left: 1.7rem;
+			color: #222;
+			display: inline;
+			padding: 1.4rem;
+
+			.link {
+				&:visited {
+					color: #222;
+				}
+				&:hover {
+					color: var(--green);
+				}
+				&:link {
+					color: #222;
+				}
+			}
+			i {
+				padding-right: 0.8rem;
+			}
+		}
+	}
+}
+
+/* media queries  */
+
+@media (max-width: 991px) {
+	html {
+		font-size: 55%;
+	}
+
+	header {
+		padding: 2rem;
+	}
+
+	section {
+		padding: 2rem;
+	}
+}
+
+@media (max-width: 710px) {
+	.logo {
+		width: 50% !important;
+	}
+}
+
+@media (max-width: 470px) {
+	html {
+		font-size: 50%;
+	}
+	.order .row form .inputBox input {
+		width: 100%;
+	}
+	.logo {
+		.logo-name {
+			font-size: 2.4rem !important;
+		}
+		i {
+			font-size: 2.6rem !important;
+		}
+	}
+}

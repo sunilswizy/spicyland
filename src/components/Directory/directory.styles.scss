@@ -1,0 +1,24 @@
+.directory {
+	width: 100%;
+	margin: 3rem 0;
+	.directory-con {
+		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 10px;
+
+		@media (max-width: 576px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	.directory-heading {
+		text-align: center;
+		span {
+			color: var(--green);
+			font-weight: bold;
+		}
+		.directory-heading-name {
+			font-size: 5rem;
+		}
+	}
+}

@@ -1,0 +1,102 @@
+.checkout {
+	width: 100%;
+	min-height: 93vh;
+	background-color: #fefefe;
+	padding: 3rem 0;
+
+	.checkout-header {
+		width: 100%;
+		height: 10vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		h1 {
+			font-size: 5rem;
+			font-weight: bolder;
+		}
+		span {
+			color: var(--green);
+			font-weight: bolder;
+		}
+	}
+	.checkout-total {
+		height: 15vh;
+		display: flex;
+		justify-content: space-around;
+		margin-bottom: 20px;
+		align-items: center;
+		span {
+			font-size: 1.6rem;
+		}
+	}
+}
+
+.empty-con {
+	width: 100%;
+	height: 68vh;
+	display: flex;
+	background-color: #fefefe;
+	align-items: center;
+	.empty-img-con {
+		width: 50%;
+		display: flex;
+		justify-content: flex-end;
+		& img {
+			width: 80%;
+		}
+	}
+	.empty-img-heading {
+		width: 50%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		& h1 {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			font-size: 5rem;
+		}
+		& p {
+			width: 100%;
+			font-size: 1.6rem;
+			display: flex;
+			justify-content: center;
+		}
+		
+	@media (max-width: 576px) {
+		h1{
+			text-align: center;
+		}
+		p{
+			text-align: center;
+			padding: 0 0.5rem;
+		}
+	}
+		.empty-logo {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			& a {
+				font-size: 4rem;
+				color: var(--green);
+
+				animation: trans 2s ease-in-out infinite;
+			}
+		}
+		.empty-btn {
+			height: 20vh;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			
+			@media (max-width: 576px) {
+				// position: absolute;
+				height: 10vh;
+				align-items: flex-end;
+			}
+		}
+	}
+}

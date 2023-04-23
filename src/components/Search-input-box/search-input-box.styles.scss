@@ -1,0 +1,26 @@
+.search-input-box {
+	width: 7%;
+	height: 55%;
+	font-size: 2rem;
+	width: 50%;
+	padding: 0 1rem;
+	border: 1px solid black;
+	border-left: none;
+	border-right: none;
+	background-color: white;
+	letter-spacing: 0.1rem;
+	@media (max-width: 576px) {
+		width: 60%;
+	}
+}
+.search-input-box::-webkit-input-placeholder {
+	color: #777;
+	font-size: 2rem;
+	letter-spacing: 0.1rem;
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+	appearance: none;
+}
